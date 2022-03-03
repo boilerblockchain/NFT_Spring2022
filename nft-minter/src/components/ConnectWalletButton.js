@@ -9,6 +9,6 @@ const ConnectWalletbutton = ({connectWallet, ...props}) => {
             Connect Metamask Wallet
         </button>
     )
-}
+};
 
-export default ConnectWalletbutton
+export default ConnectWalletbutton;

@@ -4,12 +4,18 @@ import './App.css';
 //Component imports
 import ConnectWalletButton from "./components/ConnectWalletButton.js";
 import CustomHeader from "./components/CustomHeader.js"
+import CustomTextField from "./components/CustomTextField.js"
 
 function App() {
   // Initialization and functions
 
   const connectWallet = async () => {
     alert("Get MetaMask");
+
+  }
+
+  const checkEmail = async () => {
+    alert("test");
 
   }
 
@@ -30,7 +36,9 @@ function App() {
           Learn React
         </a>
       </header>
-      <CustomHeader text={"hey"}></CustomHeader>
+      <CustomHeader text={"NFT Minter"}></CustomHeader>
+      <CustomTextField id={"email"} update={checkEmail} text={"Purdue Email"}></CustomTextField>
+      <br/>
       <ConnectWalletButton connectWallet={connectWallet}/>
       
     </div>
