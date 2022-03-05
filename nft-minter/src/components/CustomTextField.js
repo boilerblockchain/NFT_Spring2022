@@ -1,14 +1,41 @@
+import { render } from "@testing-library/react";
 import React from "react";
 
-const TextField = ({update, ...props}) => {
-  return (
-    <input
-    onChange={update}
-    placeholder={props.text}
-    />
+class TextField extends React.Component {
 
-  )
+  constructor(props) {
+    super(props);
+    this.text = props.text
 
-};
+    this.state = {
+      validity: ""
+    };
+  }
+
+  getInputValue = (event) => {
+    const userValue = event.target.value;
+
+    if (userValue.split("@")[1] == "purdue.edu") {
+      this.setState({validity: "valid email!"});
+    } else {
+      this.setState({validity: "invalid email!"});
+    }
+  };
+
+  render() {
+    return (
+      <div>
+          <input
+          placeholder={this.text}
+          onChange={this.getInputValue}
+          /> 
+          <p>{this.state.validity}</p> 
+      </div>
+    
+    );
+  }
+
+
+}
 
 export default TextField;
