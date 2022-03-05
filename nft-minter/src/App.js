@@ -5,16 +5,20 @@ import './App.css';
 import ConnectWalletButton from "./components/ConnectWalletButton.js";
 import CustomHeader from "./components/CustomHeader.js"
 import CustomTextField from "./components/CustomTextField.js"
+import MintBtn from "./components/MintButton.js"
+import DisplayImage from "./components/DisplayImage.js"
 
 function App() {
   // Initialization and functions
+
+  // Called when button is pressed
   const connectWallet = async () => {
     alert("Get MetaMask");
   }
 
-  const checkEmail = async () => {
-    alert("test");
-
+  // Called when mint button is pressed
+  const mint = async () => {
+    alert("Mint!")
   }
 
   /* Page rendering */
@@ -25,10 +29,18 @@ function App() {
         <p>
           <code>BoilerBlockchain</code>
         </p>
-        <CustomHeader text={"NFT Minter"}></CustomHeader>
-      <CustomTextField id={"email"} update={checkEmail} text={"Purdue Email"}></CustomTextField>
-      <br/>
-      <ConnectWalletButton connectWallet={connectWallet}/>
+        <div className="Content1"> 
+          <CustomHeader text={"NFT Minter"}></CustomHeader>
+          <DisplayImage/>
+          <CustomTextField text={"Purdue Email"}></CustomTextField>
+          <input placeholder='Discord Tag'></input>
+          <br/>
+          <ConnectWalletButton connectWallet={connectWallet}/>
+          <br/>
+          <MintBtn mintClick={mint}/>
+          <br/>
+          
+        </div>
       </header>
       
     </div>

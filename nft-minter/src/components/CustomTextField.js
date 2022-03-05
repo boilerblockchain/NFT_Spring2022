@@ -12,6 +12,7 @@ class TextField extends React.Component {
     };
   }
 
+  // checks input email
   getInputValue = (event) => {
     const userValue = event.target.value;
 
@@ -29,7 +30,9 @@ class TextField extends React.Component {
           placeholder={this.text}
           onChange={this.getInputValue}
           /> 
-          <p>{this.state.validity}</p> 
+          <p>
+            {this.state.validity}
+          </p> 
       </div>
     
     );
