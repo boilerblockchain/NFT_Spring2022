@@ -28,6 +28,15 @@ contract NFT is ERC721URIStorage {
 
         //setting the data of nft
         //second parameter stores the json url of the Token (tokenURI)
+
+        //go to jsonkeeper and enter in json url the format OpenSea uses
+        /*
+        {
+            "name": "Starship Bot",
+            "description": "A silent hero.",
+            "image": "https://i.imgur.com/Tu3o8Ve.mp4"
+        }
+        */
         _setTokenURI(newItemId, "https://jsonkeeper.com/b/937C");
 
         //incrementing id of the nft
