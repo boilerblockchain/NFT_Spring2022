@@ -28,7 +28,7 @@ contract NFT is ERC721URIStorage {
 
         //setting the data of nft
         //second parameter stores the json url of the Token (tokenURI)
-        _setTokenURI(newItemId, "");
+        _setTokenURI(newItemId, "https://jsonkeeper.com/b/937C");
 
         //incrementing id of the nft
         _tokenIds.increment();
