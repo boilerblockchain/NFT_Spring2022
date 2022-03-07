@@ -12,9 +12,15 @@ const main = async () => {
     //NFT Constructor runs when contract is deployed
     console.log("Contract deployed to:", nftContract.address);
 
+    //calling function createNFT from the NFT.sol contract
+    let txn = await nftContract.createNFT()
+
+    //wait for token to be mined
+    await txn.wait()
+
 
     //Contents of NFT Minting...
-}
+};
 
 const runMain = async () => {
     try {
