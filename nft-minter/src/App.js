@@ -12,8 +12,21 @@ function App() {
   // Initialization and functions
 
   // Called when button is pressed
-  const connectWallet = async () => {
-    alert("Get MetaMask");
+ // const connectWallet = async () => {
+  //  alert("Get MetaMask");
+  //}
+
+  async function connect(onConnected) {
+    if (!window.ethereum) {
+      alert("Get MetaMask!");
+      return;
+    }
+  
+    const accounts = await window.ethereum.request({
+      method: "eth_requestAccounts",
+    });
+  
+    onConnected(accounts[0]);
   }
 
   // Called when mint button is pressed
@@ -35,7 +48,7 @@ function App() {
           <CustomTextField text={"Purdue Email"}></CustomTextField>
           <input placeholder='Discord Tag'></input>
           <br/>
-          <ConnectWalletButton connectWallet={connectWallet}/>
+          <ConnectWalletButton connectWallet={connect}/>
           <br/>
           <MintBtn mintClick={mint}/>
           <br/>
