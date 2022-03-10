@@ -31,7 +31,7 @@ function App() {
 
   // Called when mint button is pressed
   const mint = async () => {
-    alert("Mint!")
+    alert("Mint")
   }
 
   /* Page rendering */
