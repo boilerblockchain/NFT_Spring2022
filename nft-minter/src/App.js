@@ -16,7 +16,7 @@ function App() {
   //  alert("Get MetaMask");
   //}
 
-  async function connect(onConnected) {
+  async function connect(onConnected) { 
     if (!window.ethereum) {
       alert("Get MetaMask!");
       return;
@@ -26,7 +26,7 @@ function App() {
       method: "eth_requestAccounts",
     });
   
-    onConnected(accounts[0]);
+    onConnected(accounts[0]); // this function connect the user to metamask. 
   }
 
   // Called when mint button is pressed
