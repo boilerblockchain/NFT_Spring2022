@@ -1,5 +1,5 @@
-import logo from './logo3.png';
-import './App.css';
+import logo from './assets/logo3.png';
+import './styles/App.css';
 
 //Component imports
 import ConnectWalletButton from "./components/ConnectWalletButton.js";
@@ -12,13 +12,26 @@ function App() {
   // Initialization and functions
 
   // Called when button is pressed
-  const connectWallet = async () => {
-    alert("Get MetaMask");
+ // const connectWallet = async () => {
+  //  alert("Get MetaMask");
+  //}
+
+  async function connect(onConnected) { 
+    if (!window.ethereum) {
+      alert("Get MetaMask!");
+      return;
+    }
+  
+    const accounts = await window.ethereum.request({
+      method: "eth_requestAccounts",
+    });
+  
+    onConnected(accounts[0]); // this function connect the user to metamask. 
   }
 
   // Called when mint button is pressed
   const mint = async () => {
-    alert("Mint!")
+    alert("Mint")
   }
 
   /* Page rendering */
@@ -35,7 +48,7 @@ function App() {
           <CustomTextField text={"Purdue Email"}></CustomTextField>
           <input placeholder='Discord Tag'></input>
           <br/>
-          <ConnectWalletButton connectWallet={connectWallet}/>
+          <ConnectWalletButton connectWallet={connect}/>
           <br/>
           <MintBtn mintClick={mint}/>
           <br/>

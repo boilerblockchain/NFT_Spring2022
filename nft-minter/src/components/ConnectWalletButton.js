@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect, useState } from "react";
+
 
 const ConnectWalletbutton = ({connectWallet, ...props}) => {
     return (
@@ -10,5 +11,7 @@ const ConnectWalletbutton = ({connectWallet, ...props}) => {
         </button>
     )
 };
+
+
 
 export default ConnectWalletbutton;
