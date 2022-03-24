@@ -1,19 +1,8 @@
-# Basic Sample Hardhat Project
+# Welcome to the Boiler Blockchain NFT Minter
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+This project includes a React web app which interacts with an NFT-minting smart contract
 
-Try running some of the following tasks:
+### Instructions
+To run locally, define your api and private keys in package.json, then use 'npx hardhat compile' and then 'npx hardhat node' to set up your local blockchain
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
-
-
-
-Sample NFT OpenSea Link: https://testnets.opensea.io/assets/0x189a60118560f22d9b9df808bc47d72589872998/0
+Next, use 'npm start' to start the web app. Here, you can interact with the application to upload an image, connect your wallet, enter your email and discord, and mint your NFT.
