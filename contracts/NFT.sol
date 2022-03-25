@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 
 // some contents of contracts are taken from buildspace.so nft project
-pragma solidity ^0.8.1;
+pragma solidity ^0.8.0;
 //import openzeppelin contracts
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
