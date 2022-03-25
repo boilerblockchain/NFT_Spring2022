@@ -10,16 +10,18 @@ class MintButton extends React.Component {
         };
     }
 
+    mint(image) {
+        console.log(this.props.NFT)
+        // pinFileToIPFS(image)
+    }
+
     updateAvail() {
         this.setState = ({clicked: "null"});
     }
+
     render() {
         return (
-            <button 
-            onClick={this.state.clicked}
-            >
-                Mint
-            </button>
+            <button onClick={this.state.clicked}>Mint</button>
         );
     }
 }

@@ -2,6 +2,7 @@ const axios = require("axios");
 const fs = require("fs");
 const FormData = require("form-data");
 
+// Sample file to upload a file to IPFS via Pinata
 const pinFileToIPFS = async () => {
 
     // Pinata URL at which to pin file
@@ -16,8 +17,8 @@ const pinFileToIPFS = async () => {
         maxContentLength: "Infinity",
         headers: {
             "Content-Type": `multipart/form-data; boundary=${data._boundary}`,
-            pinata_api_key: process.env.PINATA_API_KEY,
-            pinata_secret_api_key: process.env.PINATA_SECRET_API_KEY,
+            pinata_api_key: process.env.REACT_APP_PINATA_API_KEY,
+            pinata_secret_api_key: process.env.REACT_APP_PINATA_SECRET_API_KEY,
         },
     });
 

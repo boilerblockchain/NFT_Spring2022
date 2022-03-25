@@ -16,7 +16,7 @@ class TextField extends React.Component {
   getInputValue = (event) => {
     const userValue = event.target.value;
 
-    if (userValue.split("@")[1] == "purdue.edu") {
+    if (userValue.split("@")[1] === "purdue.edu") {
       this.setState({validity: "valid email!"});
     } else {
       this.setState({validity: "invalid email!"});
@@ -29,12 +29,12 @@ class TextField extends React.Component {
           <input
           placeholder={this.text}
           onChange={this.getInputValue}
-          /> 
+          />
           <p>
             {this.state.validity}
-          </p> 
+          </p>
       </div>
-    
+
     );
   }
 

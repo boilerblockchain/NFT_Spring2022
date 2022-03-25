@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 class DisplayImage extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -13,6 +14,8 @@ class DisplayImage extends Component {
   onImageChange = event => {
     if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0];
+      // Send updated NFT to parent
+      this.props.changeNFT(img)
       this.setState({
         image: URL.createObjectURL(img)
       });
@@ -33,4 +36,5 @@ class DisplayImage extends Component {
     );
   }
 }
+
 export default DisplayImage;
