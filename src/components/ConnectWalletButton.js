@@ -5,8 +5,7 @@ const ConnectWalletbutton = ({connectWallet, ...props}) => {
     return (
         <button 
         onClick={connectWallet}
-        className = "cta-button connect-to-wallet-button"
-        >
+        className = "cta-button connect-to-wallet-button">
             Connect Metamask Wallet
         </button>
     )
