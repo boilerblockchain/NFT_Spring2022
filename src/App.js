@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios';
 import logo from './assets/logo3.png';
 import './styles/App.css';
-// import React, { useEffect, useState } from "react";
+//import React, { useEffect, useState } from "react";
 //import { constants, ethers } from "ethers";
 
 //Component imports

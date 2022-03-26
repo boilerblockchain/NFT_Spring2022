@@ -1,8 +1,7 @@
 const axios = require("axios");
 const fs = require("fs");
 const FormData = require("form-data");
-REACT_APP_PINATA_API_KEY = '548e23ff78606b8f1260'
-REACT_APP_PINATA_SECRET_API_KEY = '1a36bd596ad96515278336ea4c09a7916353f48450633debdd45791b1abfd6fc'
+
 
 
 
@@ -21,8 +20,8 @@ const pinFileToIPFS = async () => {
         maxContentLength: "Infinity",
         headers: {
             "Content-Type": `multipart/form-data; boundary=${data._boundary}`,
-            pinata_api_key: REACT_APP_PINATA_API_KEY,
-            pinata_secret_api_key: REACT_APP_PINATA_SECRET_API_KEY,
+            pinata_api_key: process.env.REACT_APP_PINATA_API_KEY,
+            pinata_secret_api_key: process.env.REACT_APP_PINATA_SECRET_API_KEY,
         },
     });
 
