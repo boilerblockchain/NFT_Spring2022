@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import axios from 'axios';
 import logo from './assets/logo3.png';
 import './styles/App.css';
-import React, { useEffect, useState } from "react";
-import { constants, ethers } from "ethers";
+// import React, { useEffect, useState } from "react";
+//import { constants, ethers } from "ethers";
 
 //Component imports
 import ConnectWalletButton from "./components/ConnectWalletButton.js";
@@ -11,10 +11,11 @@ import CustomHeader from "./components/CustomHeader.js"
 import CustomTextField from "./components/CustomTextField.js"
 import MintBtn from "./components/MintButton.js"
 import DisplayImage from "./components/DisplayImage.js"
-import MetaMaskAuth from './components/metamask-auth';
+// import MetaMaskAuth from './components/metamask-auth';
 
 class App extends React.Component {
   // Initialization and functions
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -26,6 +27,7 @@ class App extends React.Component {
     this.connect = this.connect.bind(this);
     this.mint = this.mint.bind(this);
   }
+
 
   // Called when button is pressed
   // const connectWallet = async () => {

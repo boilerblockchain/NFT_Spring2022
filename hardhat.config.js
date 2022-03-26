@@ -17,12 +17,16 @@ require('dotenv').config();
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
+
+ALCHEMY_API_URL = H9ekQLzlDpGLStHCGh3z7kOR8HiFqFU4
+PRIVATE_KEY = 0x1AEe384bC390C30339C9Bf72B018cFA9332daa1a
+
 module.exports = {
   solidity: "0.8.1",
   networks: {
     rinkeby: {
-      url: process.env.ALCHEMY_API_URL,
-      accounts: [process.env.PRIVATE_KEY],
+      url: ALCHEMY_API_URL,
+      accounts: [PRIVATE_KEY],
     },
   },
 };
