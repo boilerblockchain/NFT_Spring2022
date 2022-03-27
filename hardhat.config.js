@@ -18,8 +18,8 @@ require('dotenv').config();
  * @type import('hardhat/config').HardhatUserConfig
  */
 
-ALCHEMY_API_URL = H9ekQLzlDpGLStHCGh3z7kOR8HiFqFU4
-PRIVATE_KEY = 0x1AEe384bC390C30339C9Bf72B018cFA9332daa1a
+//ALCHEMY_API_URL
+//PRIVATE_KEY
 
 module.exports = {
   solidity: "0.8.1",
