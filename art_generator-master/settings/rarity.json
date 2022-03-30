@@ -1,0 +1,190 @@
+{
+  "layers": [
+    {
+      "name": "Backgrounds",
+      "attributes": [
+        {
+          "name": "Charcoal.png",
+          "weight": 10
+        },
+        {
+          "name": "Coral.png",
+          "weight": 10
+        },
+        {
+          "name": "Grey.png",
+          "weight": 10
+        },
+        {
+          "name": "Sky.png",
+          "weight": 10
+        },
+        {
+          "name": "White.png",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "name": "Face",
+      "attributes": [
+        {
+          "name": "Body 1.png",
+          "weight": 10
+        },
+        {
+          "name": "Body 2.png",
+          "weight": 10
+        },
+        {
+          "name": "Body 3.png",
+          "weight": 10
+        },
+        {
+          "name": "Body 6.png",
+          "weight": 10
+        },
+        {
+          "name": "Body 7.png",
+          "weight": 10
+        },
+        {
+          "name": "Body 8.png",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "name": "Hats and Hair",
+      "attributes": [
+        {
+          "name": "Bandana.png",
+          "weight": 10
+        },
+        {
+          "name": "Beanie.png",
+          "weight": 10
+        },
+        {
+          "name": "Cowboy Hat.png",
+          "weight": 10
+        },
+        {
+          "name": "Full Grown.png",
+          "weight": 10
+        },
+        {
+          "name": "Head Band.png",
+          "weight": 10
+        },
+        {
+          "name": "Helicopter.png",
+          "weight": 10
+        },
+        {
+          "name": "Messy Hair.png",
+          "weight": 10
+        },
+        {
+          "name": "Mohawk.png",
+          "weight": 10
+        },
+        {
+          "name": "No Hair.png",
+          "weight": 10
+        },
+        {
+          "name": "Pony Tails.png",
+          "weight": 10
+        },
+        {
+          "name": "Purple Cap.png",
+          "weight": 10
+        },
+        {
+          "name": "Trimmed.png",
+          "weight": 10
+        },
+        {
+          "name": "Yellow Beanie.png",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "name": "Eyes and Glasses",
+      "attributes": [
+        {
+          "name": "Black Eyes.png",
+          "weight": 10
+        },
+        {
+          "name": "Blue Eyes.png",
+          "weight": 10
+        },
+        {
+          "name": "Eye Patch.png",
+          "weight": 10
+        },
+        {
+          "name": "Green Eyes.png",
+          "weight": 10
+        },
+        {
+          "name": "Pink Eyes.png",
+          "weight": 10
+        },
+        {
+          "name": "Purple Sunglasses.png",
+          "weight": 10
+        },
+        {
+          "name": "Thug Glasses.png",
+          "weight": 10
+        },
+        {
+          "name": "VR Glasses.png",
+          "weight": 10
+        },
+        {
+          "name": "White 3D Glasses.png",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "name": "Nose",
+      "attributes": [
+        {
+          "name": "Standard.png",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "name": "Mouth",
+      "attributes": [
+        {
+          "name": "Cigarette.png",
+          "weight": 10
+        },
+        {
+          "name": "Frown.png",
+          "weight": 10
+        },
+        {
+          "name": "Neutral.png",
+          "weight": 10
+        },
+        {
+          "name": "Pipe.png",
+          "weight": 10
+        },
+        {
+          "name": "Smile.png",
+          "weight": 10
+        }
+      ]
+    }
+  ]
+}

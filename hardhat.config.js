@@ -22,11 +22,11 @@ require('dotenv').config();
 //PRIVATE_KEY
 
 module.exports = {
-  solidity: "0.8.1",
+  solidity: "^0.8.0",
   networks: {
     rinkeby: {
-      url: ALCHEMY_API_URL,
-      accounts: [PRIVATE_KEY],
+      url: process.env.ALCHEMY_KEY,
+      accounts: [process.env.PRIVATE_KEY],
     },
   },
 };
