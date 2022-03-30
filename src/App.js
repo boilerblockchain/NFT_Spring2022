@@ -193,9 +193,12 @@ const App = () => {
           <div className="header-container">
             <p className="header gradient-text">Mint Your Own NFT</p>
 
-            {!isExistant && (<button onClick={exists}>
+            {!isExistant && (
+            <div>
+              <button onClick={exists}>
                 Does this account not already exist?
             </button>
+            </div>
             )}
   
 
@@ -229,6 +232,8 @@ const App = () => {
               </div>
               
             )}
+
+            <DisplayImage></DisplayImage>
             
             {currentAccount === "" ? (
               renderNotConnectedContainer()
