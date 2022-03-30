@@ -28,8 +28,6 @@ const App = () => {
     const [isAvailable, setAvailable] = useState(false);
     const [isLoading, setLoading] = useState(false);
     const [isMining, setMining] = useState(false);
-
-    const [isExistant, setExistant] = useState(false);
   
     const checkIfWalletIsConnected = async () => {
       //access to window.ethereum
@@ -92,7 +90,7 @@ const App = () => {
           const signer = provider.getSigner();
           const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, contractABI,signer);
   
-          connectedContract.on("NewNFTMinted", (from, tokenId) => {
+          connectedContract.on("NewEpicNFTMinted", (from, tokenId) => {
             console.log(from, tokenId.toNumber())
             alert(`Hey there! We've minted your NFT and sent it to your wallet. It may be blank right now. It can take a max of 10 min to show up on OpenSea. Here's the link: https://testnets.opensea.io/assets/${CONTRACT_ADDRESS}/${tokenId.toNumber()}`)
           });
@@ -146,7 +144,7 @@ const App = () => {
          
   
           console.log("Opening wallet to pay gas fees...")
-          let nftTxn = await connectedContract.createNFT();
+          let nftTxn = await connectedContract.makeAnEpicNFT();
           setMining(true);
           console.log("Mining...")
           
@@ -171,10 +169,6 @@ const App = () => {
         Connect to Wallet
       </button>
     );
-
-    const exists = async () => {
-      setExistant(true)
-    }
   
     //runs function when page loads
     useEffect(() => {
@@ -192,54 +186,15 @@ const App = () => {
         <div className="container">
           <div className="header-container">
             <p className="header gradient-text">Mint Your Own NFT</p>
-
-            {!isExistant && (<button onClick={exists}>
-                Does this account not already exist?
-            </button>
-            )}
   
-
-            {currentAccount && isExistant && (
-              //if wallet is connected and account is not found withing MongoDB Database, ask user to create username & password
-              <div className="app__inputContainer">
-                <input value={CustomTextField} placeholder="Email"/>
-                
-            </div>
-            )}
-
-            {currentAccount && isExistant && (
-              <div className="app__inputContainer">
-                <input value={CustomTextField} placeholder="Discord Tag"/>
-                
-            </div>
-            )}
-
-            {currentAccount && isExistant && (
-              <div className="app__inputContainer">
-                <input value={CustomTextField} placeholder="Password"/>
-                
-            </div>
-            )}
-
-            {currentAccount && isExistant && (
-              <div className="app__inputContainer">
-                <button>
-                  Create Account
-                </button>
-              </div>
-              
-            )}
             
             {currentAccount === "" ? (
               renderNotConnectedContainer()
             ) : (
-              //if wallet is connected and account is found within MongoDB Database, show mint button
               <button onClick={askContractToMintNFT} className="cta-button connect-wallet-button">
                 Mint NFT
               </button>
             )}
-
-
           </div>
   
           {isLoading && (
