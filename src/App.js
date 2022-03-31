@@ -165,6 +165,10 @@ const App = () => {
       }
     }
   
+    const CreateAccount = () => {
+        console.log("Create Account!")
+    }
+
     // Render Methods
     const renderNotConnectedContainer = () => (
       <button onClick = {connectWallet} className="cta-button connect-wallet-button">
@@ -175,6 +179,7 @@ const App = () => {
     const exists = async () => {
       setExistant(true)
     }
+
   
     //runs function when page loads
     useEffect(() => {
@@ -224,9 +229,9 @@ const App = () => {
             </div>
             )}
 
-            {currentAccount && isExistant && (
+            {currentAccount && isExistant && ( //Confusing
               <div className="app__inputContainer">
-                <button>
+                <button onClick={CreateAccount}>
                   Create Account
                 </button>
               </div>
