@@ -8,7 +8,6 @@ import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 
 //Component imports
-import ConnectWalletButton from "./components/ConnectWalletButton.js";
 import CustomHeader from "./components/CustomHeader.js"
 import CustomTextField from "./components/CustomTextField.js"
 import MintBtn from "./components/MintButton.js"
@@ -20,6 +19,22 @@ import abi from "./utils/NFT.json"
 const contractABI = abi.abi
 const CONTRACT_ADDRESS="0x24531DA25f8A26Cd90f48C5C6694E5a8A5356bf4";
 const OPENSEA_LINK = '';
+
+
+class NFTProperties extends React.Component {
+  // Initialization and functions
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      nft: null,
+      retrieveUrl: null
+    };
+
+    this.changeNFT = this.changeNFT.bind(this);
+  }
+
+}
 
 const App = () => {
 
@@ -108,6 +123,12 @@ const App = () => {
       }
     }
 
+    const changeNFT = async (image) => {
+      this.setState({
+        nft: image
+      });
+    }
+
     const pinFileToIPFS = async () => {
         // Pinata URL at which to pin file
         const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
@@ -128,6 +149,10 @@ const App = () => {
     }
   
     const askContractToMintNFT = async () => {
+
+
+      //use this command to
+      //await this.pinFileToIPFS();
   
       try {
         const { ethereum } = window;
@@ -193,7 +218,7 @@ const App = () => {
           <div className="header-container">
             <p className="header gradient-text">Mint Your Own NFT</p>
 
-            {!isExistant && (
+            {currentAccount && !isExistant && (
             <div>
               <button onClick={exists}>
                 Does this account not already exist?
@@ -242,6 +267,33 @@ const App = () => {
               <button onClick={askContractToMintNFT} className="cta-button connect-wallet-button">
                 Mint NFT
               </button>
+            )}
+
+            {currentAccount && isExistant && (
+              <div className="app__inputContainer">
+                How would you like to upload your NFTs? (If images have been already created and are ready to mint, hit Upload Images. If you would like to upload layers and want us to randomize and combine layers into images, hit Upload Layers.)
+              </div>
+              
+              
+            )}
+
+            {currentAccount && isExistant && (
+              <div className="app__inputContainer">
+                <button>
+                  Upload Images
+                </button>
+              </div>
+              
+              
+            )}
+            {currentAccount && isExistant && (
+              <div className="app__inputContainer">
+                <button>
+                  Upload Layers
+                </button>
+              </div>
+              
+              
             )}
 
 
