@@ -7,7 +7,6 @@ class DisplayImage extends Component {
     this.state = {
       image: null
     };
-
     this.onImageChange = this.onImageChange.bind(this);
   }
 
@@ -15,7 +14,7 @@ class DisplayImage extends Component {
     if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0];
       // Send updated NFT to parent
-      this.props.changeNFT(img)
+      this.props.changeNFTs(event.target.files)
       this.setState({
         image: URL.createObjectURL(img)
       });
@@ -29,7 +28,7 @@ class DisplayImage extends Component {
           <div>
             <img src={this.state.image} className="display-img"/>
             <br/>
-            <input type="file" name="myImage" onChange={this.onImageChange} />
+            <input type="file" name="myImage" multiple onChange={this.onImageChange} />
           </div>
         </div>
       </div>
