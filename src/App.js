@@ -15,21 +15,23 @@ const contractABI = abi.abi
 const CONTRACT_ADDRESS="0x24531DA25f8A26Cd90f48C5C6694E5a8A5356bf4";
 const OPENSEA_LINK = '';
 const TOKEN_ID = 0;
+// Pinata URL at which to pin file
+const PINATA_GATEWAY = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
 
-class NFTProperties extends React.Component {
-   // Initialization and functions
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      NFSs: null,
-      IPFS_URLs: null
-  };
-
-    this.changeNFTs = this.changeNFTs.bind(this);
-}
-
-}
+// class NFTProperties extends React.Component {
+//   // Initialization and functions
+//
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       NFSs: null,
+//       IPFS_URLs: null
+//     };
+//
+//     this.changeNFTs = this.changeNFTs.bind(this);
+//   }
+//
+// }
 
 const App = () => {
     //state variable to store user's public wallet
@@ -39,10 +41,15 @@ const App = () => {
     const [isMining, setMining] = useState(false);
     const [isExistant, setExistant] = useState(false);
     const [isMinted, setMinted] = useState(false);
+    // Array of NFT file metadata
+    const [NFTs, setNFTs] = useState([]);
+    // Array of rendered URLs or empty
+    const [renderedURLs, setRenderedURLs] = useState([]);
 
     //runs function when page loads
     useEffect(() => {
         checkIfWalletIsConnected();
+        setRenderedURLs([])
     }, [])
 
     const checkIfWalletIsConnected = async () => {
@@ -122,24 +129,48 @@ const App = () => {
       }
     }
 
+    // Start image selection, IPFS code, and IPFS url handling
+    const changeNFTs = async (images) => {
+        setNFTs(images);
+    }
+
     const pinFileToIPFS = async () => {
-      // Pinata URL at which to pin file
-      const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
-  
-      // File data to upload, encapsulated as an object
-      let data = new FormData();
-      data.append("file", this.state.nft);
-  
-      // Write a fetch to url above containing file contents
-      const res = await axios.post(url, data, {
-        maxContentLength: "Infinity",
-        headers: {
-          "Content-Type": `multipart/form-data; boundary=${data._boundary}`,
-          pinata_api_key: process.env.REACT_APP_PINATA_API_KEY,
-          pinata_secret_api_key: process.env.REACT_APP_PINATA_SECRET_API_KEY,
-        },
-      });
-  }
+        // Array for storing all URLs returned from Pinata
+        let urls = []
+
+        // Loop through entire NFTs state array
+        for (let i = 0; i < NFTs.length; i++) {
+            // File data to upload, encapsulated as an object
+            let data = new FormData();
+            data.append("file", NFTs[i]);
+
+            // Write a fetch to url above containing file contents
+            const res = await axios.post(PINATA_GATEWAY, data, {
+                maxContentLength: "Infinity",
+                headers: {
+                    "Content-Type": `multipart/form-data; boundary=${data._boundary}`,
+                    pinata_api_key: process.env.REACT_APP_PINATA_API_KEY,
+                    pinata_secret_api_key: process.env.REACT_APP_PINATA_SECRET_API_KEY,
+                },
+            });
+
+            // Append proper url to urls array
+            urls.push('https://gateway.pinata.cloud/ipfs/' + res.data.IpfsHash)
+        }
+
+        await renderURLs(urls)
+        return urls;
+    }
+
+    const renderURLs = async (urls) => {
+        let renders = []
+        for (let i = 0; i < urls.length; i++) {
+            renders.push(<text>NFT #{i + 1} can be retrieved <a href={urls[i]}>here</a>.</text>)
+            renders.push(<br/>)
+        }
+        setRenderedURLs(renders);
+    }
+    // End image selection, IPFS code, and IPFS url handling
 
     const askContractToMintNFT = async () => {
       try {
@@ -182,6 +213,13 @@ const App = () => {
         console.log(error)
       }
     }
+
+    // Render Methods
+    const renderNotConnectedContainer = () => (
+      <button onClick = {connectWallet} className="cta-button connect-wallet-button">
+        Connect to Wallet
+      </button>
+    );
 
     const exists = async () => {
       setExistant(true)
@@ -235,7 +273,7 @@ const App = () => {
 
             )}
 
-            <DisplayImage/>
+            <DisplayImage changeNFTs={changeNFTs}/>
 
 
             {!currentAccount && (
@@ -291,7 +329,11 @@ const App = () => {
               <div className = "sub-text2">Mining Block... </div>
           )}
 
-      
+        {!isLoading && !isMining && (
+            <div>
+                {renderedURLs}
+            </div>
+        )}
         </div>
       </div>
     );
