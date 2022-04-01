@@ -59,6 +59,11 @@ class Login extends Component {
     onSubmit(event) {
         event.preventDefault() // Prevents redirect after signup
 
+        /*
+         * Could be something else usually in a default way
+         * Application usually refreshes or swaps page
+         */
+
         const registered = {
             fullName:this.state.fullName,
             username:this.state.username,
@@ -74,6 +79,8 @@ class Login extends Component {
             email:'',
             password:''
         })
+
+        //window.location = '/home'
     }
 
     render () {
