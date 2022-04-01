@@ -10,6 +10,6 @@ dotenv.config() // environment for secure credentials
 mongoose.connect(process.env.DATABASE_ACCESS, () => console.log("Database connected"))
 
 app.use(express.json()) // parses bodies
-app.use(cors())
+app.use(cors()) // cors
 app.use('/app', routesUrls) // routesURLS is appended to base app path
 app.listen(4000, () => console.log("Server is up and running"))
