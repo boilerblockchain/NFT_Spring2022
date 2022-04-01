@@ -3,14 +3,12 @@ import { ethers } from "ethers";
 import axios from 'axios';
 import logo from './assets/logo3.png';
 import './styles/App.css';
-
 //Component imports
 import CustomHeader from "./components/CustomHeader.js"
 import CustomTextField from "./components/CustomTextField.js"
 import MintBtn from "./components/MintButton.js"
 import DisplayImage from "./components/DisplayImage.js"
 // import MetaMaskAuth from './components/metamask-auth';
-
 import abi from "./utils/NFT.json"
 
 const contractABI = abi.abi
@@ -18,7 +16,6 @@ const CONTRACT_ADDRESS="0x24531DA25f8A26Cd90f48C5C6694E5a8A5356bf4";
 const OPENSEA_LINK = '';
 // Pinata URL at which to pin file
 const PINATA_GATEWAY = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
-
 
 // class NFTProperties extends React.Component {
 //   // Initialization and functions
@@ -36,7 +33,6 @@ const PINATA_GATEWAY = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
 // }
 
 const App = () => {
-
     //state variable to store user's public wallet
     const [currentAccount, setCurrentAccount] = useState("");
     const [isAvailable, setAvailable] = useState(false);
@@ -160,13 +156,11 @@ const App = () => {
     }
 
     const renderURLs = async (urls) => {
-        console.log(urls)
         let renders = []
         for (let i = 0; i < urls.length; i++) {
             renders.push(<text>NFT #{i + 1} can be retrieved <a href={urls[i]}>here</a>.</text>)
             renders.push(<br/>)
         }
-        console.log("renders" + renders)
         setRenderedURLs(renders);
     }
     // End image selection, IPFS code, and IPFS url handling
@@ -321,43 +315,5 @@ const App = () => {
       </div>
     );
   };
-
-/*
-// Pin selected NFT to IPFS
-pinFileToIPFS = async () => {
-    // Pinata URL at which to pin file
-    const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
-
-    // File data to upload, encapsulated as an object
-    let data = new FormData();
-    data.append("file", this.state.nft);
-
-    // Write a fetch to url above containing file contents
-    const res = await axios.post(url, data, {
-      maxContentLength: "Infinity",
-      headers: {
-        "Content-Type": `multipart/form-data; boundary=${data._boundary}`,
-        pinata_api_key: process.env.REACT_APP_PINATA_API_KEY,
-        pinata_secret_api_key: process.env.REACT_APP_PINATA_SECRET_API_KEY,
-      },
-    });
-
-mint = async () => {
-    await this.pinFileToIPFS();
-    // TODO Implement minting logic
-  }
-
-
-
-    // Log response and retrieval link
-    console.log(res.data);
-    console.log('NFT can be retrieved at: ' + 'https://gateway.pinata.cloud/ipfs/' + res.data.IpfsHash)
-    this.setState({
-      retrieveUrl: 'https://gateway.pinata.cloud/ipfs/' + res.data.IpfsHash
-    });
-
-  };
-
-*/
 
 export default App;
