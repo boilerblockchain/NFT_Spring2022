@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css"
 import axios from 'axios' // connect frontend and backend
 
+import App from './App';
+import ReactDOM from 'react-dom'; // can be used to swap pages
+
 /*
  * Login form that uses onChange values to
  * update state according to schema, onSubmit
@@ -80,7 +83,13 @@ class Login extends Component {
             password:''
         })
 
-        //window.location = '/home'
+        // loads app.js on submit
+        ReactDOM.render(
+            <React.StrictMode>
+              <App />
+            </React.StrictMode>,
+            document.getElementById('root')
+          );
     }
 
     render () {
