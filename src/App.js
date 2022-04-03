@@ -6,6 +6,7 @@ import './styles/App.css';
 //import { constants, ethers } from "ethers";
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 //Component imports
 import ConnectWalletButton from "./components/ConnectWalletButton.js";
@@ -13,6 +14,8 @@ import CustomHeader from "./components/CustomHeader.js"
 import CustomTextField from "./components/CustomTextField.js"
 import MintBtn from "./components/MintButton.js"
 import DisplayImage from "./components/DisplayImage.js"
+import WalletPage from './components/WalletPage';
+import SignUpPage from './components/SignUpPage';
 // import MetaMaskAuth from './components/metamask-auth';
 
 import abi from "./utils/NFT.json"
@@ -74,9 +77,6 @@ const App = () => {
         console.log("Connected", accounts[0]);
         console.log(accounts.length());
         setCurrentAccount(accounts[0]);
-  
-  
-  
   
       } catch (error) {
         console.log(error)
@@ -185,77 +185,12 @@ const App = () => {
   //Conditional render since we don't want to show Connect button when already connected
     return (
       <div className="App">
-        <img src={logo} className="App-logo" alt="logo"/>
-        <p>
-            <code>BoilerBlockchain</code>
-        </p>
-        <div className="container">
-          <div className="header-container">
-            <p className="header gradient-text">Mint Your Own NFT</p>
-
-            {!isExistant && (
-            <div>
-              <button onClick={exists}>
-                Does this account not already exist?
-            </button>
-            </div>
-            )}
-  
-
-            {currentAccount && isExistant && (
-              //if wallet is connected and account is not found withing MongoDB Database, ask user to create username & password
-              <div className="app__inputContainer">
-                <input value={CustomTextField} placeholder="Email"/>
-                
-            </div>
-            )}
-
-            {currentAccount && isExistant && (
-              <div className="app__inputContainer">
-                <input value={CustomTextField} placeholder="Discord Tag"/>
-                
-            </div>
-            )}
-
-            {currentAccount && isExistant && (
-              <div className="app__inputContainer">
-                <input value={CustomTextField} placeholder="Password"/>
-                
-            </div>
-            )}
-
-            {currentAccount && isExistant && (
-              <div className="app__inputContainer">
-                <button>
-                  Create Account
-                </button>
-              </div>
-              
-            )}
-
-            <DisplayImage></DisplayImage>
-            
-            {currentAccount === "" ? (
-              renderNotConnectedContainer()
-            ) : (
-              //if wallet is connected and account is found within MongoDB Database, show mint button
-              <button onClick={askContractToMintNFT} className="cta-button connect-wallet-button">
-                Mint NFT
-              </button>
-            )}
-
-
-          </div>
-  
-          {isLoading && (
-              <div className = "loading"> </div>
-          )}
-  
-          {isMining && (
-              <div className = "sub-text2">Mining Block... </div>
-          )}        
-          
-        </div>
+        <BrowserRouter>
+       <Switch>
+            <Route path='/WalletPage' component={ WalletPage }/>
+            <Route path='/SignUpPage' component={ SignUpPage }/>
+       </Switch>
+       </BrowserRouter>
       </div>
     );
   };
