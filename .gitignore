@@ -3,7 +3,6 @@
 *.iws
 *.iml
 *.ipr
-
 # React ignores
 # dependencies
 node_modules
