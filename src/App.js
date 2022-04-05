@@ -13,8 +13,8 @@ import abi from "./utils/NFT.json"
 
 const contractABI = abi.abi
 const CONTRACT_ADDRESS="0x24531DA25f8A26Cd90f48C5C6694E5a8A5356bf4";
-const OPENSEA_LINK = '';
-const TOKEN_ID = 0;
+let OPENSEA_LINK = '';
+let TOKEN_ID = 0;
 // Pinata URL at which to pin file
 const PINATA_GATEWAY = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
 
@@ -111,7 +111,7 @@ const App = () => {
           connectedContract.on("NewNFTMinted", (from, tokenId) => {
             console.log(from, tokenId.toNumber())
             setMinted(true);
-            
+
 
             OPENSEA_LINK=`https://testnets.opensea.io/assets/${CONTRACT_ADDRESS}/${tokenId.toNumber()}`
             TOKEN_ID=tokenId.toNumber();
