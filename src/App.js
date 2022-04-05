@@ -13,7 +13,8 @@ import abi from "./utils/NFT.json"
 
 const contractABI = abi.abi
 const CONTRACT_ADDRESS="0x24531DA25f8A26Cd90f48C5C6694E5a8A5356bf4";
-const OPENSEA_LINK = '';
+let OPENSEA_LINK = '';
+let TOKEN_ID = 0;
 // Pinata URL at which to pin file
 const PINATA_GATEWAY = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
 
@@ -39,6 +40,7 @@ const App = () => {
     const [isLoading, setLoading] = useState(false);
     const [isMining, setMining] = useState(false);
     const [isExistant, setExistant] = useState(false);
+    const [isMinted, setMinted] = useState(false);
     // Array of NFT file metadata
     const [NFTs, setNFTs] = useState([]);
     // Array of rendered URLs or empty
@@ -108,7 +110,12 @@ const App = () => {
 
           connectedContract.on("NewNFTMinted", (from, tokenId) => {
             console.log(from, tokenId.toNumber())
-            alert(`Hey there! We've minted your NFT and sent it to your wallet. It may be blank right now. It can take a max of 10 min to show up on OpenSea. Here's the link: https://testnets.opensea.io/assets/${CONTRACT_ADDRESS}/${tokenId.toNumber()}`)
+            setMinted(true);
+
+
+            OPENSEA_LINK=`https://testnets.opensea.io/assets/${CONTRACT_ADDRESS}/${tokenId.toNumber()}`
+            TOKEN_ID=tokenId.toNumber();
+
           });
 
           setAvailable(true);
@@ -193,9 +200,11 @@ const App = () => {
           await nftTxn.wait()
 
           console.log(`Mined, see transaction: https://rinkeby.etherscan.io/tx/${nftTxn.hash}`);
+          console.log(OPENSEA_LINK)
           setMining(false);
           setLoading(false);
           setAvailable(true);
+          setMinted(true);
 
         } else {
           console.log("Ethereum object doesn't exist");
@@ -266,13 +275,27 @@ const App = () => {
 
             <DisplayImage changeNFTs={changeNFTs}/>
 
-            {currentAccount === "" ? (
-              renderNotConnectedContainer()
-            ) : (
-              //if wallet is connected and account is found within MongoDB Database, show mint button
-              <button onClick={askContractToMintNFT} className="cta-button connect-wallet-button">
+
+            {!currentAccount && (
+              <div onClick={connectWallet} className="cta-button connect-wallet-button">
+                <button>
+                  Connect to Wallet
+                </button>
+              </div>
+            )}
+
+            {currentAccount && (
+              <div onClick={askContractToMintNFT} className="app__inputContainer">
+                <button>
                 Mint NFT
-              </button>
+                </button>
+              </div>
+            )}
+
+            {isMinted && (
+              <div>
+                <a href = {"https://testnets.opensea.io/assets/"+CONTRACT_ADDRESS+"/"+TOKEN_ID} target="_blank" rel="noopener noreferrer"> See NFT </a>
+              </div>
             )}
 
             {currentAccount && isExistant && (
