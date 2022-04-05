@@ -24,7 +24,7 @@ const generateConfig = async () => {
 
         for (var j = 0; j < attributes.length; j++) {
             attributes.forEach(attribute => {
-                attribute.weight = 10
+                attribute.weight = 10 //10 is the max weight, 1 is the min weight
             })
         }
 
