@@ -213,6 +213,10 @@ const App = () => {
         console.log(error)
       }
     }
+  
+    const CreateAccount = () => {
+        console.log("Create Account!")
+    }
 
     // Render Methods
     const renderNotConnectedContainer = () => (
@@ -225,7 +229,13 @@ const App = () => {
       setExistant(true)
     }
 
-    //Conditional render since we don't want to show Connect button when already connected
+    //runs function when page loads
+    useEffect(() => {
+      checkIfWalletIsConnected();
+    }, [])
+  
+  
+  //Conditional render since we don't want to show Connect button when already connected
     return (
       <div className="App">
         <img src={logo} className="App-logo" alt="logo"/>
@@ -264,9 +274,9 @@ const App = () => {
               </div>
             )}
 
-            {currentAccount && isExistant && (
+            {currentAccount && isExistant && ( //Confusing
               <div className="app__inputContainer">
-                <button>
+                <button onClick={CreateAccount}>
                   Create Account
                 </button>
               </div>
