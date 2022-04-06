@@ -6,7 +6,8 @@ import './styles/App.css';
 //import { constants, ethers } from "ethers";
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
 
 //Component imports
 import ConnectWalletButton from "./components/ConnectWalletButton.js";
@@ -14,8 +15,8 @@ import CustomHeader from "./components/CustomHeader.js"
 import CustomTextField from "./components/CustomTextField.js"
 import MintBtn from "./components/MintButton.js"
 import DisplayImage from "./components/DisplayImage.js"
-import WalletPage from './components/WalletPage';
-import SignUpPage from './components/SignUpPage';
+import WalletPage from './WalletPage';
+
 // import MetaMaskAuth from './components/metamask-auth';
 
 import abi from "./utils/NFT.json"
@@ -185,16 +186,19 @@ const App = () => {
   //Conditional render since we don't want to show Connect button when already connected
     return (
       <div className="App">
-        <BrowserRouter>
-       <Switch>
-            <Route path='/WalletPage' component={ WalletPage }/>
-            <Route path='/SignUpPage' component={ SignUpPage }/>
-       </Switch>
-       </BrowserRouter>
+        <img src={logo} className="App-logo" alt="logo"/>
+            <p>
+                <code>BoilerBlockchain</code>
+            </p>
+            <div className="container">
+                <div className="header-container">
+                    <p className="header gradient-text">Mint Your Own NFT</p>
+                          <WalletPage></WalletPage>
+                </div>
+            </div>
       </div>
     );
   };
-
 /*
 // Pin selected NFT to IPFS
 pinFileToIPFS = async () => {

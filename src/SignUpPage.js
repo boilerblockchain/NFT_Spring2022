@@ -1,7 +1,7 @@
 import React from "react";
-import App from "../App";
-import logo from '../assets/logo3.png';
-import '../styles/App.css';
+import App from "./App";
+import logo from './assets/logo3.png';
+import './styles/App.css';
 
 class SignUpPage extends React.Component {
     constructor(props) {
@@ -37,17 +37,17 @@ class SignUpPage extends React.Component {
                 />
             <div className="form-group">
                 <input 
-                type = "Discord tag" 
-                name = "Discord tag" 
-                placeholder = "Discord Tag"
+                type = "discord" 
+                name = "discord" 
+                placeholder = "Discord tag"
                 value={this.state.discord}
                 onChange={this.onInputchange}
                 />             
             </div>
             <div className="form-group">
                 <input 
-                type = "Password" 
-                name = "Password" 
+                type = "password" 
+                name = "password" 
                 placeholder = "Password"
                 value={this.state.password}
                 onChange={this.onInputchange}
