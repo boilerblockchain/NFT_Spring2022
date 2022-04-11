@@ -165,7 +165,7 @@ const App = () => {
     const renderURLs = async (urls) => {
         let renders = []
         for (let i = 0; i < urls.length; i++) {
-            renders.push(<text>NFT #{i + 1} can be retrieved <a href={urls[i]}>here</a>.</text>)
+            renders.push(<text>NFT #{i + 1} can be retrieved <a href={urls[i]} target="_blank">here</a>.</text>)
             renders.push(<br/>)
         }
         setRenderedURLs(renders);
@@ -213,7 +213,7 @@ const App = () => {
         console.log(error)
       }
     }
-  
+
     const CreateAccount = () => {
         console.log("Create Account!")
     }
@@ -233,8 +233,8 @@ const App = () => {
     useEffect(() => {
       checkIfWalletIsConnected();
     }, [])
-  
-  
+
+
   //Conditional render since we don't want to show Connect button when already connected
     return (
       <div className="App">
