@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const signUpTemplatesCopy = require('../models/SignUpModels')
 const bcrypt = require('bcrypt') // used to encrypt password
- 
+
 // post request that creates a new user schema
 router.post('/signup', async (request, response) => {
 
@@ -16,6 +16,7 @@ router.post('/signup', async (request, response) => {
         email:request.body.email,
         password:securePassword
     })
+
     signedUpUser.save()
     .then(data =>{
         response.json(data) // create user json if saves succesfully
@@ -25,4 +26,4 @@ router.post('/signup', async (request, response) => {
     })
 })
 
-module.exports = router 
+module.exports = router
