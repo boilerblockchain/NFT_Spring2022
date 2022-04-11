@@ -17,7 +17,8 @@ const raceWeights = [
   },
 ];
 
-const finalDict = {skull: {
+const races = {
+      skull: {
         name: "Skull",
         layers: [
         ],  
@@ -26,16 +27,16 @@ const finalDict = {skull: {
 
 //console.log(inputFolders)
 defaultWeight = 100
-//console.log(finalDict['skull']['layers'])
+//console.log(races['skull']['layers'])
 for (let i = 0; i < inputFolders.length; i++) {
-    if(inputFolders[i] != ('config.js') && inputFolders[i] != ('.DS_Store') && inputFolders[i] != ('filefinder.js') && inputFolders[i] != ('dictCreate.js')) {
+    if(inputFolders[i] != ('config.js') && inputFolders[i] != ('.DS_Store') && inputFolders[i] != ('filefinder.js') && inputFolders[i] != ('dictCreate.js') && inputFolders[i] != ('editRarity.js')) {
         var currentFolder = fs.readdirSync('./input/'+inputFolders[i]);
         //console.log(currentFolder)
         
-        finalDict['skull']['layers'][i]={}
-        finalDict['skull']['layers'][i]['name']=inputFolders[i]
+        races['skull']['layers'][i]={}
+        races['skull']['layers'][i]['name']=inputFolders[i]
 
-        finalDict['skull']['layers'][i]['elements']=[]
+        races['skull']['layers'][i]['elements']=[]
         
         for (let j = 0; j < currentFolder.length; j++) {
             var id = j
@@ -44,28 +45,40 @@ for (let i = 0; i < inputFolders.length; i++) {
             //console.log('id: ' + id)
             //console.log('location: ' + location);
             //console.log('name: ' + name)
-            finalDict['skull']['layers'][i]['elements'][j]={'id':id,'path':location,'weight':defaultWeight}
+            races['skull']['layers'][i]['elements'][j]={'id':id,'name':name,'path':location,'weight':defaultWeight}
 
 
         }
-        finalDict['skull']['layers'][i]['position']={ x: 0, y: 0 }
-        finalDict['skull']['layers'][i]['size']={ width: width, height: height }
+        races['skull']['layers'][i]['position']={ x: 0, y: 0 }
+        races['skull']['layers'][i]['size']={ width: width, height: height }
     }
     
    
 }
-finalDict['skull']['layers'].shift()
+races['skull']['layers'].shift()
 
 //created name
-//console.log(finalDict['skull']['layers'][0])
-//console.log(finalDict['skull'])
+//console.log(races['skull']['layers'][0])
+//console.log(races['skull'])
 //console.log('----------------------------------------')
 /*
 for(i=0;i<10;i++){
-    console.log(finalDict['skull']['layers'][i])
+    console.log(races['skull']['layers'][i])
 }
 */
 
+//console.log(races)
+//console.log(races['skull'])
+
+var dictstring = JSON.stringify(races);
+fs.writeFile("./input/races.json", dictstring, function(err, result) {
+  if(err) console.log('error', err);
+});
+
 module.exports = {
-    finalDict
+    races
   };
+
+
+
+console.log('DictCreate: Successful')

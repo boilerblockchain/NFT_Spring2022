@@ -1,4 +1,5 @@
 const fs = require("fs");
+const path = require('path');
 const { createCanvas, loadImage } = require("canvas");
 const {
   width,
@@ -7,16 +8,47 @@ const {
   baseImageUri,
   editionSize,
   startEditionFrom,
-  endEditionAt,
-  races1,
+  races,
   raceWeights,
 } = require("./input/config.js");
+
+var edited = false;
+
+//need to find a way to confirm that edit has been requested
+if(edited) {
+  const {races} = require('./input/editRarity.js')
+}
+
 const console = require("console");
 const canvas = createCanvas(width, height);
 const ctx = canvas.getContext("2d");
 var metadataList = [];
 var attributesList = [];
 var dnaList = [];
+
+
+
+const dir = 'output';
+
+// delete directory recursively
+try {
+    fs.rmdirSync(dir, { recursive: true });
+
+    console.log(`${dir} is deleted!`);
+} catch (err) {
+    console.error(`Error while deleting ${dir}.`);
+}
+
+
+try {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir)
+    console.log(`${dir} is created!`)
+  }
+} catch (err) {
+  console.error(err)
+  
+}
 
 const saveImage = (_editionCount) => {
   fs.writeFileSync(
@@ -85,8 +117,8 @@ const drawElement = (_element) => {
   addAttributes(_element);
 };
 
-const constructLayerToDna = (_dna = [], _races1 = [], _race) => {
-  let mappedDnaToLayers = _races1[_race].layers.map((layer, index) => {
+const constructLayerToDna = (_dna = [], _races = [], _race) => {
+  let mappedDnaToLayers = _races[_race].layers.map((layer, index) => {
     let selectedElement = layer.elements.find((e) => e.id == _dna[index]);
     return {
       name: layer.name,
@@ -114,9 +146,9 @@ const isDnaUnique = (_DnaList = [], _dna = []) => {
   return foundDna == undefined ? true : false;
 };
 
-const createDna = (_races1, _race) => {
+const createDna = (_races, _race) => {
   let randNum = [];
-  _races1[_race].layers.forEach((layer) => {
+  _races[_race].layers.forEach((layer) => {
     let randElementNum = Math.floor(Math.random() * 100);
     let num = 0;
     layer.elements.forEach((element) => {
@@ -140,41 +172,75 @@ const saveMetaDataSingleFile = (_editionCount) => {
   );
 };
 
+
+var unique = false; //variable for if we want unique images
+const endEditionAt = 5; //variable for number nfts to be deployed
+
+//Main Method
 const startCreating = async () => {
+
   writeMetaData("");
   let editionCount = startEditionFrom;
   while (editionCount <= endEditionAt) {
     let race = getRace(editionCount);
-    let newDna = createDna(races1, race);
+    let newDna = createDna(races, race);
 
-    if (isDnaUnique(dnaList, newDna)) {
-      let results = constructLayerToDna(newDna, races1, race);
-      let loadedElements = []; //promise array
-      results.forEach((layer) => {
-        loadedElements.push(loadLayerImg(layer));
-      });
 
-      await Promise.all(loadedElements).then((elementArray) => {
-        ctx.clearRect(0, 0, width, height);
-        // drawBackground();
-        elementArray.forEach((element) => {
-          drawElement(element);
+    if (unique) {
+      if (isDnaUnique(dnaList, newDna)) {
+        let results = constructLayerToDna(newDna, races, race);
+        let loadedElements = []; //promise array
+        results.forEach((layer) => {
+          loadedElements.push(loadLayerImg(layer));
         });
-        signImage(`#${editionCount}`);
-        saveImage(editionCount);
-        addMetadata(newDna, editionCount);
-        saveMetaDataSingleFile(editionCount);
-        console.log(
-          `Created edition: ${editionCount}, Race: ${race} with DNA: ${newDna}`
-        );
-      });
-      dnaList.push(newDna);
-      editionCount++;
-    } else {
-      console.log("DNA exists!");
+
+        await Promise.all(loadedElements).then((elementArray) => {
+          ctx.clearRect(0, 0, width, height);
+          // drawBackground();
+          elementArray.forEach((element) => {
+            drawElement(element);
+          });
+          //signImage(`#${editionCount}`);
+          saveImage(editionCount);
+          addMetadata(newDna, editionCount);
+          saveMetaDataSingleFile(editionCount);
+          console.log(
+            `Created edition: ${editionCount}, Race: ${race} with DNA: ${newDna}`
+          );
+        });
+        dnaList.push(newDna);
+        editionCount++;
+      } else {
+        console.log("DNA exists!");
+      }
+    }
+    else {
+      let results = constructLayerToDna(newDna, races, race);
+        let loadedElements = []; //promise array
+        results.forEach((layer) => {
+          loadedElements.push(loadLayerImg(layer));
+        });
+
+        await Promise.all(loadedElements).then((elementArray) => {
+          ctx.clearRect(0, 0, width, height);
+          // drawBackground();
+          elementArray.forEach((element) => {
+            drawElement(element);
+          });
+          //signImage(`#${editionCount}`);
+          saveImage(editionCount);
+          addMetadata(newDna, editionCount);
+          saveMetaDataSingleFile(editionCount);
+          console.log(
+            `Created edition: ${editionCount}, Race: ${race} with DNA: ${newDna}`
+          );
+        });
+        dnaList.push(newDna);
+        editionCount++;
     }
   }
   writeMetaData(JSON.stringify(metadataList));
 };
+
 
 startCreating();
