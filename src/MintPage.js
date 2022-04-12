@@ -1,5 +1,6 @@
 import React from "react";
-import './styles/App.css'
+import './styles/App.css';
+import logo from './assets/logo3.png';
 
 class MintPage extends React.Component {
     constructor(props) {
@@ -28,23 +29,32 @@ class MintPage extends React.Component {
   }
     render() {
         return (
-            <div className = "MintPage">
-                < form >
-                <div>
-                    <h2>Upload images</h2>
+            <div className="MintPage">
+                <img src={logo} className="App-logo" alt="logo"/>
+            <p>
+                <code>BoilerBlockchain</code>
+            </p>
+            <div className="container">
+                <div className="header-container">
+                    <p className="header gradient-text">Mint Your Own NFT</p>
+                    < form >
+                    <div>
+                        <h2>Upload images</h2>
+                    </div>
+                    <h3>Images</h3>
+                    <input type="file" multiple onChange={this.imagesSelectedHandler} />
+                    <div>
+                        <h3>Number of Images Uploaded: {this.state.images.length}</h3>
+                    </div>
+                    <div>
+                        <h2>Upload layers</h2>
+                    </div>
+                    <h3>Layers</h3>
+                    <input type="file" multiple onChange={this.layersSelectedHandler} />
+                </form>    
                 </div>
-                <h3>Images</h3>
-                <input type="file" multiple onChange={this.imagesSelectedHandler} />
-                <div>
-                    <h3>Number of Images Uploaded: {this.state.images.length}</h3>
-                </div>
-                <div>
-                    <h2>Upload layers</h2>
-                </div>
-                <h3>Layers</h3>
-                <input type="file" multiple onChange={this.layersSelectedHandler} />
-                </form>
             </div>
+        </div>
         )
     }
 }
