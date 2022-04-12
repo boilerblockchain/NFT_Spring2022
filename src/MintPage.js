@@ -1,5 +1,5 @@
 import React from "react";
-import './styles/App.css';
+import styles from './styles/App.css';
 import logo from './assets/logo3.png';
 import styled from 'styled-components';
 
@@ -21,15 +21,22 @@ class MintPage extends React.Component {
         this.contractSelection = this.contractSelection.bind(this);
         this.storageSelection = this.storageSelection.bind(this);
     }
-   imagesSelectedHandler = (image) => {
-    let addedImages = this.state.images.concat(image)
-    this.setState({ images: addedImages })
-    console.log("upload file " + image.name)
+   imagesSelectedHandler = (event) => {
+    this.setState({ images: event.target.files })
+    console.log("upload file " + event.name)
   }
-  layersSelectedHandler = (layer) => {
-    let addedLayers = this.state.layers.concat(URL.createObjectURL(layer))
-    this.setState({ layers: addedLayers })
-    console.log("upload file " + layer.name)
+  layersSelectedHandler = (event) => {
+    this.setState({ layers: event.target.files })
+    console.log("upload file " + event.name)
+    if (event.target.files) {
+        const layerArray = Array.from(event.target.files).map((file)=> URL.createObjectURL(file))
+        console.log(layerArray)
+        this.setState ({
+            layers: layerArray
+        })
+
+    
+    }
   }
   contractSelection = async() => {
       this.setState ({
@@ -104,6 +111,11 @@ class MintPage extends React.Component {
               });
             console.log(this.state.contractType);
           };
+          const renderLayers = (source) => {
+              return source.map((layer) => {
+                  return <img className={styles.imgPrev} src={layer} key={layer}/>
+              })
+          }
 
         return (
             <div className="MintPage">
@@ -121,11 +133,14 @@ class MintPage extends React.Component {
                         <h3>Images</h3>
                         <input type="file" multiple accept="image/*" onChange={this.imagesSelectedHandler} />
                         <div>
-                            <h2>Upload layers</h2>
+                            <h2>Upload layers{console.log(this.state.images)}</h2>
                         </div>
-                        <h3>Layers</h3>
+                        <h3>Layers {console.log(this.state.layers)}</h3>
                             <input type="file" multiple onChange={this.layersSelectedHandler} />
-                        <img src={this.state.layers[0]} className="display-img"/>
+                            <div>
+                                {renderLayers(this.state.layers)}
+                            </div>
+                            
                         <DropDownContainer>
                             <DropDownHeader onClick={this.contractSelection}>Contract Type</DropDownHeader>
                             {this.state.contractDropdown && (
