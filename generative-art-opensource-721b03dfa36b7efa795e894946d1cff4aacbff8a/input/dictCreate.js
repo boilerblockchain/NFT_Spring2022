@@ -6,9 +6,12 @@ const height = 1000;
 const dir = __dirname;
 const description = "This is an NFT made by the coolest generative code.";
 const baseImageUri = "https://hashlips/nft";
-const startEditionFrom = 1;
-const endEditionAt = 10;
-const editionSize = 10;
+const startEditionFrom = 1;//don't change
+const endEditionAt = 10;//max tokens
+const editionSize = 10;//rarity
+
+const defaultWeight = 50
+
 const raceWeights = [
   {
     value: "skull",
@@ -16,6 +19,20 @@ const raceWeights = [
     to: editionSize,
   },
 ];
+
+
+const properties = {
+  width: width,
+  height: height,
+  dir: __dirname,
+  description: description,
+  baseImageUri: baseImageUri,
+  startEditionFrom: startEditionFrom,
+  endEditionAt: endEditionAt,
+  editionSize: editionSize,
+  raceWeights: raceWeights,
+  unique: true
+};
 
 const races = {
       skull: {
@@ -26,10 +43,12 @@ const races = {
 };
 
 //console.log(inputFolders)
-defaultWeight = 100
+
 //console.log(races['skull']['layers'])
 for (let i = 0; i < inputFolders.length; i++) {
-    if(inputFolders[i] != ('config.js') && inputFolders[i] != ('.DS_Store') && inputFolders[i] != ('filefinder.js') && inputFolders[i] != ('dictCreate.js') && inputFolders[i] != ('editRarity.js')) {
+    if(inputFolders[i] != ('config.js') && inputFolders[i] != ('.DS_Store') && inputFolders[i] != ('filefinder.js') 
+    && inputFolders[i] != ('dictCreate.js') && inputFolders[i] != ('editRarity.js') && inputFolders[i] != ('races.json')
+    && inputFolders[i] != ('editProperties.js') && inputFolders[i] != ('uploadFolders.js') && inputFolders[i] != ('properties.json')) {
         var currentFolder = fs.readdirSync('./input/'+inputFolders[i]);
         //console.log(currentFolder)
         
@@ -70,15 +89,15 @@ for(i=0;i<10;i++){
 //console.log(races)
 //console.log(races['skull'])
 
+var dictstring = JSON.stringify(properties);
+fs.writeFile("./input/properties.json", dictstring, function(err, result) {
+  if(err) console.log('error', err);
+});
+
 var dictstring = JSON.stringify(races);
 fs.writeFile("./input/races.json", dictstring, function(err, result) {
   if(err) console.log('error', err);
 });
-
-module.exports = {
-    races
-  };
-
 
 
 console.log('DictCreate: Successful')

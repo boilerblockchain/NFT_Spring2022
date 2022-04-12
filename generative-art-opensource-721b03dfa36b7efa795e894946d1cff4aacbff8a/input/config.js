@@ -18,190 +18,9 @@ var raceWeights = [
   },
 ];
 
-var {
-  races
-} = require("./dictCreate.js");
+const races = require("./races.json");
 
-
-//--------------------------------------------------------------------
-/*
-const races = {
-  skull: {
-    name: "Skull",
-    layers: [
-      {
-        name: "Background",
-        elements: [
-          {
-            id: 0,
-            name: "LightBlue",
-            path: `${dir}/1-background/LightBlue.png`,
-            weight: 10,
-          },
-          {
-            id: 1,
-            name: "Orange",
-            path: `${dir}/1-background/Orange.png`,
-            weight: 10,
-          },
-        ],
-        position: { x: 0, y: 0 },
-        size: { width: width, height: height },
-      },
-      {
-        name: "Suit",
-        elements: [
-          {
-            id: 0,
-            name: "Regular",
-            path: `${dir}/2-suit/Regular.png`,
-            weight: 10,
-          },
-          {
-            id: 1,
-            name: "Orange",
-            path: `${dir}/2-suit/Orange.png`,
-            weight: 10,
-          },
-        ],
-        position: { x: 0, y: 0 },
-        size: { width: width, height: height },
-      },
-      {
-        name: "Shoulder",
-        elements: [
-          {
-            id: 0,
-            name: "LunaFlag",
-            path: `${dir}/3-shoulder/LunaFlag.png`,
-            weight: 10,
-          },
-          {
-            id: 1,
-            name: "USA",
-            path: `${dir}/3-shoulder/USA.png`,
-            weight: 10,
-          },
-        ],
-        position: { x: 0, y: 0 },
-        size: { width: width, height: height },
-      },
-      {
-        name: "Pin",
-        elements: [
-          {
-            id: 0,
-            name: "Smiley",
-            path: `${dir}/4-pin/Smiley.png`,
-            weight: 10,
-          },
-          {
-            id: 1,
-            name: "LunaBluePin",
-            path: `${dir}/4-pin/LunaBluePin.png`,
-            weight: 90,
-          },
-        ],
-        position: { x: 0, y: 0 },
-        size: { width: width, height: height },
-      },
-      {
-        name: "Race",
-        elements: [
-          {
-            id: 0,
-            name: "Skull",
-            path: `${dir}/5-skin/Skull.png`,
-            weight: 10,
-          },
-        ],
-        position: { x: 0, y: 0 },
-        size: { width: width, height: height },
-      },
-      {
-        name: "Facial hair",
-        elements: [
-          {
-            id: 0,
-            name: "NoFacialHair",
-            path: `${dir}/6-facial-hair/NoFacialHair.png`,
-            weight: 10,
-          },
-        ],
-        position: { x: 0, y: 0 },
-        size: { width: width, height: height },
-      },
-      {
-        name: "Mask",
-        elements: [
-          {
-            id: 0,
-            name: "NoMask",
-            path: `${dir}/7-mask/NoMask.png`,
-            weight: 10,
-          },
-          {
-            id: 1,
-            name: "mask",
-            path: `${dir}/7-mask/mask.png`,
-            weight: 10,
-          },
-        ],
-        position: { x: 0, y: 0 },
-        size: { width: width, height: height },
-      },
-      {
-        name: "Hair",
-        elements: [
-          {
-            id: 0,
-            name: "BlondeBun",
-            path: `${dir}/8-hair/BlondeBun.png`,
-            weight: 10,
-          },
-          {
-            id: 1,
-            name: "Pink",
-            path: `${dir}/8-hair/Pink.png`,
-            weight: 10,
-          },
-        ],
-        position: { x: 0, y: 0 },
-        size: { width: width, height: height },
-      },
-      {
-        name: "Accessories",
-        elements: [
-          {
-            id: 0,
-            name: "NoAcc",
-            path: `${dir}/9-accessories/NoAcc.png`,
-            weight: 10,
-          },
-        ],
-        position: { x: 0, y: 0 },
-        size: { width: width, height: height },
-      },
-      {
-        name: "Headwear",
-        elements: [
-          {
-            id: 0,
-            name: "GlassDome",
-            path: `${dir}/90-headwear/GlassDome.png`,
-            weight: 10,
-          },
-        ],
-        position: { x: 0, y: 0 },
-        size: { width: width, height: height },
-      },
-    ],
-  },
-};
-
-//--------------------------------------------------------------------
-
-
+//test races dictionary
 /*
 const races = {
   skull: {
@@ -405,6 +224,10 @@ for(i=0;i<10;i++){
 */
 
 
+var dictstring = JSON.stringify(races);
+fs.writeFile("./input/races.json", dictstring, function(err, result) {
+  if(err) console.log('error', err);
+});
 
 module.exports = {
   width,
@@ -416,3 +239,5 @@ module.exports = {
   races,
   raceWeights,
 };
+
+console.log("config: Successful")

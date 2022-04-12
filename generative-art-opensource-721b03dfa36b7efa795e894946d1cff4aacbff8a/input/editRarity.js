@@ -1,15 +1,13 @@
 var fs = require("fs");
 
-var {
-  races
-} = require("./config.js");
+const races = require("./races.json");
 
-
+//inputs
 //Which folder? User clicks on folder which is name
 //Which element
-var folder = '1-background' //variable to search folder
-var element = 'LightBlue' //variable to search folder's element
-var newWeight = 10; //variable to edit weight
+var folder = '90-headwear' //variable to search folder
+var element = 'Headset' //variable to search folder's element
+var newWeight = 100; //variable to edit weight
 
 
 for(i=0;i<10;i++){
@@ -19,7 +17,6 @@ for(i=0;i<10;i++){
       //locate element with name
       
         if(races['skull']['layers'][i]['elements'][j]['name'] == element) {
-          console.log(races['skull']['layers'][i]['elements'][j])
 
           var id = races['skull']['layers'][i]['elements'][j]['id']
           var name = races['skull']['layers'][i]['elements'][j]['name']
@@ -35,10 +32,12 @@ for(i=0;i<10;i++){
 }
 
 var dictstring = JSON.stringify(races);
-fs.writeFile("./races.json", dictstring, function(err, result) {
+fs.writeFile("./input/races.json", dictstring, function(err, result) {
   if(err) console.log('error', err);
 });
 
 module.exports = {
   races
 }
+
+console.log("editRarity: Successful")

@@ -1,6 +1,8 @@
 const fs = require("fs");
 const path = require('path');
 const { createCanvas, loadImage } = require("canvas");
+
+/*
 const {
   width,
   height,
@@ -11,13 +13,23 @@ const {
   races,
   raceWeights,
 } = require("./input/config.js");
+*/
 
-var edited = false;
+const startEditionFrom = 1;
+const properties = require("./input/properties.json");
+const width = properties['width']
+const height = properties['height']
+const description = properties['description']
+const baseImageUri = properties['baseImageUri']
+const endEditionAt = properties['endEditionAt']
+const editionSize = properties['raceWeights'][0]['to']
+const raceWeights = properties['raceWeights']
 
-//need to find a way to confirm that edit has been requested
-if(edited) {
-  const {races} = require('./input/editRarity.js')
-}
+const unique = properties['unique']
+
+const races = require("./input/races.json");
+
+
 
 const console = require("console");
 const canvas = createCanvas(width, height);
@@ -171,10 +183,6 @@ const saveMetaDataSingleFile = (_editionCount) => {
     JSON.stringify(metadataList.find((meta) => meta.edition == _editionCount))
   );
 };
-
-
-var unique = false; //variable for if we want unique images
-const endEditionAt = 5; //variable for number nfts to be deployed
 
 //Main Method
 const startCreating = async () => {
