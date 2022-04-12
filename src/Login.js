@@ -19,6 +19,8 @@ class Login extends Component {
         this.state = {  // sign up form fields from schema
             fullName:'',
             username:'',
+            discord:'',
+            discordValid: false,
             email:'',
             password:''
         }
@@ -27,6 +29,7 @@ class Login extends Component {
         this.changeFullName = this.changeFullName.bind(this)
         this.changeUsername = this.changeUsername.bind(this)
         this.changeEmail = this.changeEmail.bind(this)
+        this.changeDiscord = this.changeDiscord.bind(this)
         this.changePassword = this.changePassword.bind(this)
 
         this.onSubmit = this.onSubmit.bind(this)
@@ -48,6 +51,51 @@ class Login extends Component {
         this.setState({
             email:event.target.value
         })
+    }
+
+    reverse(str){  
+        let reversed = "";      
+         for (var i = str.length - 1; i >= 0; i--){         
+           reversed += str[i];  
+         }     
+        return reversed;
+    }
+
+    changeDiscord(event) {
+        this.setState({
+            discord:event.target.value
+        })
+        var end = this.reverse(this.reverse(event.target.value).split("#")[0]);
+        var beginning = this.reverse(this.reverse(event.target.value).split("#")[1]);
+        if (end.length === 4) {
+            if ((parseInt(end) !== NaN) && (parseInt(end) >= 1000) && (parseInt(end) <= 9999)) {
+                if ((beginning.length > 2) && (beginning.length < 32)) {
+                    this.setState({
+                        discordValid:true,
+                    })
+                } else {
+                    this.setState({
+                        discordValid:false
+                    })
+                }
+            } else {
+                this.setState({
+                    discordValid:false
+                })
+            }
+        } else {
+            this.setState({
+                discordValid:false
+            })
+        }
+    }
+
+    checkDiscord(validity) {
+        if (validity === true) {
+            return "";
+        } else {
+            return "Invalid Discord, must be in proper form (i.e. Name#1234)"
+        }
     }
     changePassword(event) {
         this.setState({
@@ -75,6 +123,7 @@ class Login extends Component {
             password:this.state.password,
             wallet:WalletPage.wallet
         }
+
 
         axios.post('http://localhost:4000/app/signup', registered) // post request with registered
             .then(response => console.log(response.data))
@@ -122,6 +171,14 @@ class Login extends Component {
                             className='form-control form-group' 
                             />
 
+                            <input type='text' // discord field
+                            placeholder='Discord'
+                            onChange={this.changeDiscord}
+                            value={this.state.discord}
+                            className='form-control form-group' 
+                            />
+
+                            <p3>{this.checkDiscord(this.state.discordValid)}</p3>
 
                             <input type='password' // password field
                             placeholder='password'
@@ -129,6 +186,7 @@ class Login extends Component {
                             value={this.state.password}
                             className='form-control form-group' 
                             />
+
 
                             <input type='submit' className='btn btn-danger btn-block' value='Submit'/>
                         </form>
