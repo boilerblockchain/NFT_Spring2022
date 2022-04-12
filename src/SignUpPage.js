@@ -2,6 +2,8 @@ import React from "react";
 import App from "./App";
 import logo from './assets/logo3.png';
 import './styles/App.css';
+import MintPage from "./MintPage.js";
+import ReactDOM from 'react-dom';
 
 class SignUpPage extends React.Component {
     constructor(props) {
@@ -22,12 +24,25 @@ class SignUpPage extends React.Component {
     
       onSubmitForm() {
         console.log(this.state)
+        ReactDOM.render(
+            <React.StrictMode>
+                <MintPage />
+            </React.StrictMode>,
+            document.getElementById('root')
+        );
       }
     render() {
         const { items } = this.state;
         return (
-        <div className="SignUpPage">
-            <form>
+            <div className="SignUpPage">
+            <img src={logo} className="App-logo" alt="logo"/>
+                <p>
+                    <code>BoilerBlockchain</code>
+                </p>
+                <div className="container">
+                    <div className="header-container">
+                        <p className="header gradient-text">Mint Your Own NFT</p>
+                        <form>
                 <input 
                 type="email" 
                 name="email" 
@@ -57,7 +72,9 @@ class SignUpPage extends React.Component {
                 <button onClick={this.onSubmitForm}>Submit</button>
             </div>
             </form>
-        </div>
+                    </div>
+                </div>
+          </div>
         
         );
     }

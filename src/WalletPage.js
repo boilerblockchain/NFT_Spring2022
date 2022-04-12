@@ -36,11 +36,11 @@ class WalletPage extends React.Component {
             //console.log(this.accounts.length);
     
 
-            if (!(ethereum.isConnected())) { // Go to create acct page
+            if ((ethereum.isConnected())) { // Go to create acct page
                 console.log("Create account!")
                 ReactDOM.render(
                     <React.StrictMode>
-                    <SignUpPage />
+                        <SignUpPage />
                     </React.StrictMode>,
                     document.getElementById('root')
                 );
@@ -48,7 +48,7 @@ class WalletPage extends React.Component {
                 console.log("Mint!")
                 ReactDOM.render(
                     <React.StrictMode>
-                    <MintPage />
+                        <MintPage />
                     </React.StrictMode>,
                     document.getElementById('root')
                 );

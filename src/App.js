@@ -186,16 +186,7 @@ const App = () => {
   //Conditional render since we don't want to show Connect button when already connected
     return (
       <div className="App">
-        <img src={logo} className="App-logo" alt="logo"/>
-            <p>
-                <code>BoilerBlockchain</code>
-            </p>
-            <div className="container">
-                <div className="header-container">
-                    <p className="header gradient-text">Mint Your Own NFT</p>
-                          <WalletPage></WalletPage>
-                </div>
-            </div>
+         <WalletPage></WalletPage>
       </div>
     );
   };

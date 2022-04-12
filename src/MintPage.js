@@ -1,6 +1,7 @@
 import React from "react";
 import './styles/App.css';
 import logo from './assets/logo3.png';
+import styled from 'styled-components';
 
 class MintPage extends React.Component {
     constructor(props) {
@@ -11,11 +12,14 @@ class MintPage extends React.Component {
             rarities: [],
             totalNFTs: null,
             contractType: null,
-
-
+            contractDropdown: false,
+            storageDropdown: false,
+            storageType: null,
         };
         this.imagesSelectedHandler = this.imagesSelectedHandler.bind(this);
         this.layersSelectedHandler = this.layersSelectedHandler.bind(this);
+        this.contractSelection = this.contractSelection.bind(this);
+        this.storageSelection = this.storageSelection.bind(this);
     }
    imagesSelectedHandler = (image) => {
     let addedImages = this.state.images.concat(image)
@@ -23,11 +27,84 @@ class MintPage extends React.Component {
     console.log("upload file " + image.name)
   }
   layersSelectedHandler = (layer) => {
-    let addedLayers = this.state.layers.concat(layer)
+    let addedLayers = this.state.layers.concat(URL.createObjectURL(layer))
     this.setState({ layers: addedLayers })
     console.log("upload file " + layer.name)
   }
+  contractSelection = async() => {
+      this.setState ({
+        contractDropdown: true
+      });
+      console.log(this.state.contractDropdown)
+  }
+  storageSelection = async() => {
+    this.setState ({
+      storageDropdown: true
+    });
+    console.log(this.state.storageDropdown)
+}
+
     render() {
+        const Main = styled("div")`
+        font-family: sans-serif;
+        background: #f0f0f0;
+        height: 100vh;
+        `;
+
+        const DropDownContainer = styled("div")`
+        width: 10.5em;
+        margin: 0 auto;
+        `;
+
+        const DropDownHeader = styled("button")`
+        margin-bottom: 0.8em;
+        padding: 0.4em 2em 0.4em 1em;
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+        font-weight: 500;
+        font-size: 1.3rem;
+        color: #3faffa;
+        background: #ffffff;
+        `;
+
+        const DropDownListContainer = styled("div")``;
+
+        const DropDownList = styled("ul")`
+        padding: 0;
+        margin: 0;
+        padding-left: 1em;
+        background: #ffffff;
+        border: 2px solid #e5e5e5;
+        box-sizing: border-box;
+        color: #3faffa;
+        font-size: 1.3rem;
+        font-weight: 500;
+        &:first-child {
+            padding-top: 0.8em;
+        }
+        `;
+
+        const ListItem = styled("li")`
+        list-style: none;
+        margin-bottom: 0.8em;
+        `;
+        const contractOptions = ["721", "1155"];
+        const storageOptions = ["On-chain", "Off-chain"];
+
+        const onContractClicked = value => () => {
+            this.setState ({
+                contractDropdown: false,
+                contractType: value
+              });
+            console.log(this.state.contractType);
+          };
+          const onStorageClicked = value => () => {
+            this.setState ({
+                storageDropdown: false,
+                storageType: value
+              });
+            console.log(this.state.contractType);
+          };
+
         return (
             <div className="MintPage">
                 <img src={logo} className="App-logo" alt="logo"/>
@@ -38,21 +115,51 @@ class MintPage extends React.Component {
                 <div className="header-container">
                     <p className="header gradient-text">Mint Your Own NFT</p>
                     < form >
-                    <div>
-                        <h2>Upload images</h2>
-                    </div>
-                    <h3>Images</h3>
-                    <input type="file" multiple onChange={this.imagesSelectedHandler} />
-                    <div>
-                        <h3>Number of Images Uploaded: {this.state.images.length}</h3>
-                    </div>
-                    <div>
-                        <h2>Upload layers</h2>
-                    </div>
-                    <h3>Layers</h3>
-                    <input type="file" multiple onChange={this.layersSelectedHandler} />
+                        <div>
+                            <h2>Upload images</h2>
+                        </div>
+                        <h3>Images</h3>
+                        <input type="file" multiple accept="image/*" onChange={this.imagesSelectedHandler} />
+                        <div>
+                            <h2>Upload layers</h2>
+                        </div>
+                        <h3>Layers</h3>
+                            <input type="file" multiple onChange={this.layersSelectedHandler} />
+                        <img src={this.state.layers[0]} className="display-img"/>
+                        <DropDownContainer>
+                            <DropDownHeader onClick={this.contractSelection}>Contract Type</DropDownHeader>
+                            {this.state.contractDropdown && (
+                            <DropDownListContainer>
+                                <DropDownList>
+                                {contractOptions.map(option => (
+                                    <ListItem onClick={onContractClicked(option)} key={Math.random()}>
+                                    {option}
+                                    </ListItem>
+                                ))}
+                                </DropDownList>
+                            </DropDownListContainer>
+                            )}
+                        </DropDownContainer>
+                        <DropDownContainer>
+                            <DropDownHeader onClick={this.storageSelection}>Storage Type</DropDownHeader>
+                            {this.state.storageDropdown && (
+                            <DropDownListContainer>
+                                <DropDownList>
+                                {storageOptions.map(option => (
+                                    <ListItem onClick={onStorageClicked(option)} key={Math.random()}>
+                                    {option}
+                                    </ListItem>
+                                ))}
+                                </DropDownList>
+                            </DropDownListContainer>
+                            )}
+                        </DropDownContainer>
                 </form>    
                 </div>
+                <div>
+                <h3>{this.state.contractType}</h3>
+                </div>
+                <h3>{this.state.storageType}</h3>
             </div>
         </div>
         )
