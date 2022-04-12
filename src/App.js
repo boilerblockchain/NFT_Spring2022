@@ -67,7 +67,7 @@ const App = () => {
       const accounts = await ethereum.request({method: 'eth_accounts'});
 
       //if user has multiple authorized accounts, we use the first one if it's there
-      if (accounts.length !== 0) {
+      if (accounts.length != 0) {
         const account = accounts[0];
         console.log("Found an authorized account: ", account);
         setCurrentAccount(account)

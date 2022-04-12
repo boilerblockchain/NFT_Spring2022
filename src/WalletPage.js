@@ -47,7 +47,7 @@ class WalletPage extends React.Component {
                 console.log("Mint!")
                 ReactDOM.render(
                     <React.StrictMode>
-                    <App />
+                    <Login />
                     </React.StrictMode>,
                     document.getElementById('root')
                 );

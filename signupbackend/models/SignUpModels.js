@@ -18,6 +18,10 @@ const signUpTemplate = new mongoose.Schema({
         type:String,
         required:true
     },
+    wallet:{
+        type:JSON,
+        required:true
+    },
     date:{
         type:Date,
         default:Date.now // function that is called upon user creation NOT PASSED

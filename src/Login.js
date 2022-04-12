@@ -4,6 +4,7 @@ import axios from 'axios' // connect frontend and backend
 
 import App from './App';
 import ReactDOM from 'react-dom'; // can be used to swap pages
+import WalletPage from './WalletPage';
 
 /*
  * Login form that uses onChange values to
@@ -71,7 +72,8 @@ class Login extends Component {
             fullName:this.state.fullName,
             username:this.state.username,
             email:this.state.email,
-            password:this.state.password
+            password:this.state.password,
+            wallet:WalletPage.wallet
         }
 
         axios.post('http://localhost:4000/app/signup', registered) // post request with registered

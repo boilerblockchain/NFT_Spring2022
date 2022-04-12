@@ -14,7 +14,8 @@ router.post('/signup', async (request, response) => {
         fullName:request.body.fullName,
         username:request.body.username,
         email:request.body.email,
-        password:securePassword
+        password:securePassword,
+        wallet:request.body.wallet
     })
     signedUpUser.save()
     .then(data =>{
