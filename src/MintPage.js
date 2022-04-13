@@ -213,13 +213,15 @@ class MintPage extends React.Component {
                         name="totalNFTs" 
                         placeholder="Total # NFTs"
                         value={this.state.totalNFTs}
-                        onChange={this.onInputchange}
+                        onChange={this.OnInputchange}
                     />
                 </div>
                 <div>
                 <h3>{this.state.contractType}</h3>
                 </div>
                 <h3>{this.state.storageType}</h3>
+                <h3>{this.state.totalNFTs}</h3>
+                <div><button> Preview Collection </button></div>
                
                 </center>
             </div>
