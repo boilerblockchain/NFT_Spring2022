@@ -31,8 +31,8 @@ for(i=0;i<10;i++){
   }
 }
 
-var dictstring = JSON.stringify(races);
-fs.writeFile("./input/races.json", dictstring, function(err, result) {
+var dictstringRaces = JSON.stringify(races);
+fs.writeFile("./input/races.json", dictstringRaces, function(err, result) {
   if(err) console.log('error', err);
 });
 
