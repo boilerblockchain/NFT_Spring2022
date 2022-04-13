@@ -1,7 +1,7 @@
 import React from "react";
-import App from "./App";
 import logo from './assets/logo3.png';
 import './styles/App.css';
+import App from './App.js'
 import MintPage from "./MintPage.js";
 import ReactDOM from 'react-dom';
 
@@ -35,44 +35,46 @@ class SignUpPage extends React.Component {
         const { items } = this.state;
         return (
             <div className="SignUpPage">
-            <img src={logo} className="App-logo" alt="logo"/>
+                <img src={logo} className="App-logo" alt="logo"/>
                 <p>
                     <code>BoilerBlockchain</code>
                 </p>
                 <div className="container">
+                <center>
                     <div className="header-container">
                         <p className="header gradient-text">Mint Your Own NFT</p>
-                        <form>
-                <input 
-                type="email" 
-                name="email" 
-                placeholder="Email"
-                value={this.state.email}
-                onChange={this.onInputchange}
-                />
-            <div className="form-group">
-                <input 
-                type = "discord" 
-                name = "discord" 
-                placeholder = "Discord tag"
-                value={this.state.discord}
-                onChange={this.onInputchange}
-                />             
-            </div>
-            <div className="form-group">
-                <input 
-                type = "password" 
-                name = "password" 
-                placeholder = "Password"
-                value={this.state.password}
-                onChange={this.onInputchange}
-                />             
-            </div>
-            <div>
-                <button onClick={this.onSubmitForm}>Submit</button>
-            </div>
-            </form>
+                            <form>
+                                <input 
+                                type="email" 
+                                name="email" 
+                                placeholder="Email"
+                                value={this.state.email}
+                                onChange={this.onInputchange}
+                                />
+                            <div className="form-group">
+                                <input 
+                                type = "discord" 
+                                name = "discord" 
+                                placeholder = "Discord tag"
+                                value={this.state.discord}
+                                onChange={this.onInputchange}
+                                />             
+                            </div>
+                            <div className="form-group">
+                                <input 
+                                type = "password" 
+                                name = "password" 
+                                placeholder = "Password"
+                                value={this.state.password}
+                                onChange={this.onInputchange}
+                                />             
+                            </div>
+                            <div>
+                                <button onClick={this.onSubmitForm}>Submit</button>
+                            </div>
+                    </form>
                     </div>
+                 </center>
                 </div>
           </div>
         

@@ -9,7 +9,6 @@ class MintPage extends React.Component {
         this.state = {
             images: [],
             layers: [],
-            rarities: [],
             totalNFTs: null,
             contractType: null,
             contractDropdown: false,
@@ -18,13 +17,14 @@ class MintPage extends React.Component {
         };
         this.imagesSelectedHandler = this.imagesSelectedHandler.bind(this);
         this.layersSelectedHandler = this.layersSelectedHandler.bind(this);
+
         this.contractSelection = this.contractSelection.bind(this);
         this.storageSelection = this.storageSelection.bind(this);
     }
    imagesSelectedHandler = (event) => {
     this.setState({ images: event.target.files })
     console.log("upload file " + event.name)
-  }
+   }
   layersSelectedHandler = (event) => {
     this.setState({ layers: event.target.files })
     console.log("upload file " + event.name)
@@ -97,6 +97,7 @@ class MintPage extends React.Component {
         const contractOptions = ["721", "1155"];
         const storageOptions = ["On-chain", "Off-chain"];
 
+
         const onContractClicked = value => () => {
             this.setState ({
                 contractDropdown: false,
@@ -124,6 +125,7 @@ class MintPage extends React.Component {
                 <code>BoilerBlockchain</code>
             </p>
             <div className="container">
+            <center>
                 <div className="header-container">
                     <p className="header gradient-text">Mint Your Own NFT</p>
                     < form >
@@ -140,7 +142,6 @@ class MintPage extends React.Component {
                             <div>
                                 {renderLayers(this.state.layers)}
                             </div>
-                            
                         <DropDownContainer>
                             <DropDownHeader onClick={this.contractSelection}>Contract Type</DropDownHeader>
                             {this.state.contractDropdown && (
@@ -175,7 +176,10 @@ class MintPage extends React.Component {
                 <h3>{this.state.contractType}</h3>
                 </div>
                 <h3>{this.state.storageType}</h3>
+               
+                </center>
             </div>
+            
         </div>
         )
     }
