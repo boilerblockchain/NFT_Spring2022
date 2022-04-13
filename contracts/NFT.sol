@@ -5,8 +5,8 @@ pragma solidity ^0.8.0;
 //import openzeppelin contracts
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
-
 import "hardhat/console.sol";
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 contract NFT is ERC721URIStorage {
 
@@ -19,27 +19,19 @@ contract NFT is ERC721URIStorage {
 
     //Contents of Contract...
 
-    function createNFT() public {
+    function createNFT(string memory tokenURI) public returns (uint) {
+
+        _tokenIds.increment();
         //current token id, initially at 0
         uint256 newItemId = _tokenIds.current();
 
         //mint nft sender to msg
         _safeMint(msg.sender, newItemId);
 
-        //setting the data of nft
-        //second parameter stores the json url of the Token (tokenURI)
+        
+        _setTokenURI(newItemId, tokenURI);
 
-        //go to jsonkeeper and enter in json url the format OpenSea uses
-        /*
-        {
-            "name": "Starship Bot",
-            "description": "A silent hero.",
-            "image": "https://i.imgur.com/Tu3o8Ve.mp4"
-        }
-        */
-        _setTokenURI(newItemId, "https://jsonkeeper.com/b/937C");
-
-        //incrementing id of the nft
-        _tokenIds.increment();
+        return newItemId;
+        
     }
 }
