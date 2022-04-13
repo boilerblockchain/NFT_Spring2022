@@ -14,42 +14,56 @@ class MintPage extends React.Component {
             contractDropdown: false,
             storageDropdown: false,
             storageType: null,
+            rarityDropdown: false,
+            rarities: [],
         };
         this.imagesSelectedHandler = this.imagesSelectedHandler.bind(this);
         this.layersSelectedHandler = this.layersSelectedHandler.bind(this);
 
         this.contractSelection = this.contractSelection.bind(this);
         this.storageSelection = this.storageSelection.bind(this);
+        this.NewArray = this.NewArray.bind(this)
+        this.OnInputchange = this.OnInputchange.bind(this);
     }
-   imagesSelectedHandler = (event) => {
-    this.setState({ images: event.target.files })
-    console.log("upload file " + event.name)
-   }
-  layersSelectedHandler = (event) => {
-    this.setState({ layers: event.target.files })
-    console.log("upload file " + event.name)
-    if (event.target.files) {
-        const layerArray = Array.from(event.target.files).map((file)=> URL.createObjectURL(file))
-        console.log(layerArray)
-        this.setState ({
-            layers: layerArray
-        })
-
-    
+    imagesSelectedHandler = (event) => {
+        this.setState({ images: event.target.files })
+        console.log("upload file " + event.name)
     }
-  }
-  contractSelection = async() => {
+    layersSelectedHandler = (event) => {
+        this.setState({ layers: event.target.files })
+        console.log("upload file " + event.name)
+    }
+    contractSelection = async() => {
       this.setState ({
         contractDropdown: true
       });
       console.log(this.state.contractDropdown)
-  }
-  storageSelection = async() => {
-    this.setState ({
-      storageDropdown: true
-    });
-    console.log(this.state.storageDropdown)
-}
+    }
+    storageSelection = async() => {
+        this.setState ({
+            storageDropdown: true
+        });
+        console.log(this.state.storageDropdown)
+    }
+    raritySelection = async() => {
+        this.setState ({
+           rarityDropdown: true 
+        })
+        console.log(this.state.rariryDropdown)
+    }
+
+    OnInputchange(event) {
+        this.setState({
+        [event.target.name]: event.target.value
+        });
+    }
+    NewArray(size) {
+        var x = [];
+        for (var i = 0; i < size; ++i) {
+            x[i] = i;
+        }
+        return x;
+    }
 
     render() {
         const Main = styled("div")`
@@ -96,6 +110,8 @@ class MintPage extends React.Component {
         `;
         const contractOptions = ["721", "1155"];
         const storageOptions = ["On-chain", "Off-chain"];
+        const rarityFields = this.NewArray(this.state.layers.length)
+        
 
 
         const onContractClicked = value => () => {
@@ -103,20 +119,20 @@ class MintPage extends React.Component {
                 contractDropdown: false,
                 contractType: value
               });
+            contractDropdownPlaceholder = value;
             console.log(this.state.contractType);
-          };
-          const onStorageClicked = value => () => {
+        };
+        const onStorageClicked = value => () => {
             this.setState ({
                 storageDropdown: false,
                 storageType: value
               });
+            storageDropdownPlaceholder = value;
             console.log(this.state.contractType);
-          };
-          const renderLayers = (source) => {
-              return source.map((layer) => {
-                  return <img className={styles.imgPrev} src={layer} key={layer}/>
-              })
-          }
+        };
+        var contractDropdownPlaceholder = "Contract Type"
+        var storageDropdownPlaceholder = "Storage Type"
+
 
         return (
             <div className="MintPage">
@@ -139,11 +155,30 @@ class MintPage extends React.Component {
                         </div>
                         <h3>Layers {console.log(this.state.layers)}</h3>
                             <input type="file" multiple onChange={this.layersSelectedHandler} />
-                            <div>
-                                {renderLayers(this.state.layers)}
-                            </div>
+
                         <DropDownContainer>
-                            <DropDownHeader onClick={this.contractSelection}>Contract Type</DropDownHeader>
+                            <DropDownHeader onClick={this.raritySelection}>Layer Rarities</DropDownHeader>
+                            {this.state.rarityDropdown && (
+                            <DropDownListContainer>
+                                <DropDownList>
+                                <form>
+                                {rarityFields.map(option => (
+                                    <input  
+                                    type = "text"
+                                    name="rarity" 
+                                    label = {this.state.layers[option].name}
+                                    placeholder= {this.state.layers[option].name}
+                                    value={this.state.rarities[option]}
+                                    onChange={this.OnInputchange}  
+                                    />
+                                ))}
+                                </form>
+                                </DropDownList>
+                            </DropDownListContainer>
+                            )}
+                        </DropDownContainer>
+                        <DropDownContainer>
+                            <DropDownHeader onClick={this.contractSelection}>{contractDropdownPlaceholder}</DropDownHeader>
                             {this.state.contractDropdown && (
                             <DropDownListContainer>
                                 <DropDownList>
@@ -157,7 +192,7 @@ class MintPage extends React.Component {
                             )}
                         </DropDownContainer>
                         <DropDownContainer>
-                            <DropDownHeader onClick={this.storageSelection}>Storage Type</DropDownHeader>
+                            <DropDownHeader onClick={this.storageSelection}>{storageDropdownPlaceholder}</DropDownHeader>
                             {this.state.storageDropdown && (
                             <DropDownListContainer>
                                 <DropDownList>
@@ -173,6 +208,15 @@ class MintPage extends React.Component {
                 </form>    
                 </div>
                 <div>
+                    <input 
+                        type="text" 
+                        name="totalNFTs" 
+                        placeholder="Total # NFTs"
+                        value={this.state.totalNFTs}
+                        onChange={this.onInputchange}
+                    />
+                </div>
+                <div>
                 <h3>{this.state.contractType}</h3>
                 </div>
                 <h3>{this.state.storageType}</h3>
@@ -184,4 +228,12 @@ class MintPage extends React.Component {
         )
     }
 }
+//if (event.target.files) {
+  //  const layerArray = Array.from(event.target.files).map((file)=> URL.createObjectURL(file))
+  //  console.log(layerArray)
+  //  this.setState ({
+  //      layers: layerArray
+  //  })
+
+//}
 export default MintPage;
