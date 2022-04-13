@@ -32,13 +32,13 @@ for(i=0;i<races['skull']['layers'].length;i++){
 console.log(races['skull']['layers'][0]['size'])
 
 
-var dictstring = JSON.stringify(properties);
-fs.writeFile("./input/properties.json", dictstring, function(err, result) {
+var dictstringProperties = JSON.stringify(properties);
+fs.writeFile("./input/properties.json", dictstringProperties, function(err, result) {
   if(err) console.log('error', err);
 });
 
-var dictstring = JSON.stringify(races);
-fs.writeFile("./input/races.json", dictstring, function(err, result) {
+var dictstringRaces = JSON.stringify(races);
+fs.writeFile("./input/races.json", dictstringRaces, function(err, result) {
   if(err) console.log('error', err);
 });
 
