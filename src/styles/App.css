@@ -4,9 +4,19 @@
 
 .App-logo {
   height: 10vmin;
-  padding-right: 90%;
+  padding-right: 0%;
   padding-top: 1%;
   pointer-events: none;
+  animation: App-logo-spin 1s infinite linear;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -103,13 +113,3 @@
   transition: 1s;
 }
 
-
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

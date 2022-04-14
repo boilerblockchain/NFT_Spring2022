@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css"
 import axios from 'axios' // connect frontend and backend
-
 import App from './App';
 import ReactDOM from 'react-dom'; // can be used to swap pages
 import WalletPage from './WalletPage';
@@ -14,15 +13,16 @@ import WalletPage from './WalletPage';
  * an http request to create a user.
  */
 class CreateAccount extends Component {
-    constructor () {
-        super()
+    constructor (props) {
+        super(props)
         this.state = {  // sign up form fields from schema
             fullName:'',
             username:'',
             discord:'',
             discordValid: false,
             email:'',
-            password:''
+            password:'',
+            wallet: props.walletProp
         }
 
         // binds methods in constructor so calls work
@@ -33,6 +33,8 @@ class CreateAccount extends Component {
         this.changePassword = this.changePassword.bind(this)
 
         this.onSubmit = this.onSubmit.bind(this)
+
+        console.log("Wallet is " + this.state.wallet)
     }
     // functions to change the state based on form changes
     changeFullName(event) {

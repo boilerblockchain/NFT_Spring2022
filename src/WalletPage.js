@@ -11,9 +11,21 @@ class WalletPage extends React.Component {
         super(props);
     
         this.state = {
-          wallets: [{}, {}]
+          wallets: null
         };
     }
+
+    isWalletLinked(inputWallet) {
+        console.log("Is Wallet Linked!?")
+        console.log("Wallet" + inputWallet)
+        if (inputWallet != null) {
+            console.log("True")
+            return true
+        } else {
+            return false
+        }
+    }
+
     connectWallet = async () => {
         try {
             const { ethereum } = window;
@@ -25,21 +37,22 @@ class WalletPage extends React.Component {
             }
 
             //requesting access to the account
-            const wallet = await ethereum.request({ method: "eth_requestAccounts" });
+            var wallet = null
+            wallet = await ethereum.request({ method: "eth_requestAccounts" });
 
             //printing public address
             this.setState({
-                wallets: [wallet]
+                wallets: wallet
             });
-            console.log("Connected", this.wallets);
             //console.log(this.accounts.length);
     
 
-            if (!(ethereum.isConnected())) { // Go to create acct page
+            //if (!(ethereum.isConnected())) { // Go to create acct page
+            if (this.isWalletLinked(wallet)) {
                 console.log("Create account!")
                 ReactDOM.render(
                     <React.StrictMode>
-                    <CreateAccount />
+                    <CreateAccount walletProp={wallet}></CreateAccount>
                     </React.StrictMode>,
                     document.getElementById('root')
                 );
@@ -47,7 +60,7 @@ class WalletPage extends React.Component {
                 console.log("Mint!")
                 ReactDOM.render(
                     <React.StrictMode>
-                    <App />
+                    <WalletPage />
                     </React.StrictMode>,
                     document.getElementById('root')
                 );
