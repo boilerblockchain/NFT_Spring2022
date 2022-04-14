@@ -5,8 +5,6 @@ import logo from './assets/logo3.png';
 import './styles/App.css';
 //import React, { useEffect, useState } from "react";
 //import { constants, ethers } from "ethers";
-import React, { useEffect, useState } from "react";
-import { ethers } from "ethers";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 
