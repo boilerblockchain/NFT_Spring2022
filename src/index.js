@@ -2,12 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
 import App from './App';
+import WalletPage from './WalletPage';
 import Login from './Login'
 import reportWebVitals from './reportWebVitals';
+import { Wallet } from 'ethers';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Login />
+    <WalletPage />
   </React.StrictMode>,
   document.getElementById('root')
 );
