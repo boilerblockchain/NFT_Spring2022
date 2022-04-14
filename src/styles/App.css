@@ -38,6 +38,12 @@
 .App-link {
   color: #61dafb;
 }
+.imgPrev{
+  width: 200px;
+  height: 100px;
+  object-fit: cover;
+  padding: 0.75rem;
+}
 
 @keyframes App-logo-spin {
   from {

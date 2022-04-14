@@ -3,11 +3,20 @@ import { ethers } from "ethers";
 import axios from 'axios';
 import logo from './assets/logo3.png';
 import './styles/App.css';
+//import React, { useEffect, useState } from "react";
+//import { constants, ethers } from "ethers";
+import React, { useEffect, useState } from "react";
+import { ethers } from "ethers";
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
+
 //Component imports
 import CustomHeader from "./components/CustomHeader.js"
 import CustomTextField from "./components/CustomTextField.js"
 import MintBtn from "./components/MintButton.js"
 import DisplayImage from "./components/DisplayImage.js"
+import WalletPage from './WalletPage';
+
 // import MetaMaskAuth from './components/metamask-auth';
 import abi from "./utils/NFT.json"
 
@@ -94,6 +103,7 @@ const App = () => {
         console.log("Connected", accounts[0]);
         console.log(accounts.length());
         setCurrentAccount(accounts[0]);
+  
       } catch (error) {
         console.log(error)
       }
@@ -238,115 +248,46 @@ const App = () => {
   //Conditional render since we don't want to show Connect button when already connected
     return (
       <div className="App">
-        <img src={logo} className="App-logo" alt="logo"/>
-        <p>
-            <code>BoilerBlockchain</code>
-        </p>
-        <div className="container">
-          <div className="header-container">
-            <p className="header gradient-text">Mint Your Own NFT</p>
-
-            {currentAccount && !isExistant && (
-                <div>
-                    <button onClick={exists}>
-                        Does this account not already exist?
-                    </button>
-                </div>
-            )}
-
-
-            {currentAccount && isExistant && (
-              //if wallet is connected and account is not found withing MongoDB Database, ask user to create username & password
-              <div className="app__inputContainer">
-                <input value={CustomTextField} placeholder="Email"/>
-              </div>
-            )}
-
-            {currentAccount && isExistant && (
-              <div className="app__inputContainer">
-                <input value={CustomTextField} placeholder="Discord Tag"/>
-              </div>
-            )}
-
-            {currentAccount && isExistant && (
-              <div className="app__inputContainer">
-                <input value={CustomTextField} placeholder="Password"/>
-              </div>
-            )}
-
-            {currentAccount && isExistant && ( //Confusing
-              <div className="app__inputContainer">
-                <button onClick={CreateAccount}>
-                  Create Account
-                </button>
-              </div>
-
-            )}
-
-            <DisplayImage changeNFTs={changeNFTs}/>
-
-
-            {!currentAccount && (
-              <div onClick={connectWallet} className="cta-button connect-wallet-button">
-                <button>
-                  Connect to Wallet
-                </button>
-              </div>
-            )}
-
-            {currentAccount && (
-              <div onClick={askContractToMintNFT} className="app__inputContainer">
-                <button>
-                Mint NFT
-                </button>
-              </div>
-            )}
-
-            {isMinted && (
-              <div>
-                <a href = {"https://testnets.opensea.io/assets/"+CONTRACT_ADDRESS+"/"+TOKEN_ID} target="_blank" rel="noopener noreferrer"> See NFT </a>
-              </div>
-            )}
-
-            {currentAccount && isExistant && (
-              <div className="app__inputContainer">
-                How would you like to upload your NFTs? (If images have been already created and are ready to mint, hit Upload Images. If you would like to upload layers and want us to randomize and combine layers into images, hit Upload Layers.)
-              </div>
-            )}
-
-            {currentAccount && isExistant && (
-              <div className="app__inputContainer">
-                <button>
-                  Upload Images
-                </button>
-              </div>
-            )}
-
-            {currentAccount && isExistant && (
-              <div className="app__inputContainer">
-                <button>
-                  Upload Layers
-                </button>
-              </div>
-            )}
-          </div>
-
-          {isLoading && (
-              <div className = "loading"> </div>
-          )}
-
-          {isMining && (
-              <div className = "sub-text2">Mining Block... </div>
-          )}
-
-        {!isLoading && !isMining && (
-            <div>
-                {renderedURLs}
-            </div>
-        )}
-        </div>
+         <WalletPage></WalletPage>
       </div>
     );
   };
+/*
+// Pin selected NFT to IPFS
+pinFileToIPFS = async () => {
+    // Pinata URL at which to pin file
+    const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
+
+    // File data to upload, encapsulated as an object
+    let data = new FormData();
+    data.append("file", this.state.nft);
+
+    // Write a fetch to url above containing file contents
+    const res = await axios.post(url, data, {
+      maxContentLength: "Infinity",
+      headers: {
+        "Content-Type": `multipart/form-data; boundary=${data._boundary}`,
+        pinata_api_key: process.env.REACT_APP_PINATA_API_KEY,
+        pinata_secret_api_key: process.env.REACT_APP_PINATA_SECRET_API_KEY,
+      },
+    });
+
+mint = async () => {
+    await this.pinFileToIPFS();
+    // TODO Implement minting logic
+  }
+
+  
+
+    // Log response and retrieval link
+    console.log(res.data);
+    console.log('NFT can be retrieved at: ' + 'https://gateway.pinata.cloud/ipfs/' + res.data.IpfsHash)
+    this.setState({
+      retrieveUrl: 'https://gateway.pinata.cloud/ipfs/' + res.data.IpfsHash
+    });
+
+  };
+
+*/
 
 export default App;
