@@ -17,6 +17,7 @@ import WalletPage from './WalletPage';
 
 // import MetaMaskAuth from './components/metamask-auth';
 import abi from "./utils/NFT.json"
+import Moralis from "moralis";
 
 const contractABI = abi.abi
 const CONTRACT_ADDRESS="0x24531DA25f8A26Cd90f48C5C6694E5a8A5356bf4";
@@ -101,7 +102,7 @@ const App = () => {
         console.log("Connected", accounts[0]);
         console.log(accounts.length());
         setCurrentAccount(accounts[0]);
-  
+
       } catch (error) {
         console.log(error)
       }
@@ -237,16 +238,20 @@ const App = () => {
       setExistant(true)
     }
 
-    //runs function when page loads
-    useEffect(() => {
-      checkIfWalletIsConnected();
-    }, [])
-
+    /*
+     * Uses the MoralisSDK to logout a user.
+     */
+    const handleLogout = async () => {
+        await Moralis.User.logOut();
+    }
 
   //Conditional render since we don't want to show Connect button when already connected
     return (
       <div className="App">
-         <WalletPage></WalletPage>
+        <WalletPage />
+        <form onSubmit={handleLogout}>
+          <input type='submit' className='btn btn-danger btn-block' value='Logout'/>
+        </form>
       </div>
     );
   };
@@ -275,7 +280,7 @@ mint = async () => {
     // TODO Implement minting logic
   }
 
-  
+
 
     // Log response and retrieval link
     console.log(res.data);

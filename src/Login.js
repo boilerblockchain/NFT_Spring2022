@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom'; // can be used to swap pages
 import axios from 'axios' // connect frontend and backend
 import { useMoralis } from "react-moralis";
 import App from './App';
 import "bootstrap/dist/css/bootstrap.min.css"
+import Moralis from "moralis";
 
 /*
  * Login form that uses onChange values to
@@ -18,19 +19,37 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [wallets, setWallets] = useState([]);
+    const [isSignUp, setIsSignUp] = useState(false);
     // Moralis state variables
     const {
         authenticate,
-        signup,
         isAuthenticated,
         user,
-        account,
-        setUserData,
-        logout
+        setUserData
     } = useMoralis();
 
-    // functions to change the state based on form changes
+    useEffect(async () => {
+        // Handle re-render after signup()'s authenticate() call
+        if (isSignUp) {
+            // Setting user data
+            await setUserData({
+                "username": username,
+                "password": password,
+                "email": email,
+                "fullName": fullName
+            });
+            await renderApp();
+            return;
+        }
+        // Handle if cached user exists
+        if (isAuthenticated) {
+            console.log("Session already authenticated...")
+            console.log("Welcome " + user.get('fullName') + ", " + user.get('email'))
+            await renderApp();
+        }
+    }, [isAuthenticated, user]);
+
+    // Functions to change the state based on form changes
     const changeFullName = async (event) => {
         setFullName(event.target.value);
     }
@@ -48,64 +67,17 @@ const Login = () => {
     }
 
     /*
-     * OLD - for MongoDB implementation
-     * Gathers state values from the form.
-     * Uses axios post() to send a json object registered to
-     * backend which sends it to mongodb
-     */
-    // const onSubmit = async (event) => {
-    //     event.preventDefault() // Prevents redirect after signup
-    //
-    //     /*
-    //      * Could be something else usually in a default way
-    //      * Application usually refreshes or swaps page
-    //      */
-    //
-    //     const registered = {
-    //         fullName:this.state.fullName,
-    //         username:this.state.username,
-    //         email:this.state.email,
-    //         password:this.state.password
-    //     }
-    //
-    //     axios.post('http://localhost:4000/app/signup', registered) // post request with registered
-    //         .then(response => console.log(response.data))
-    //     this.setState({
-    //         fullName:'',
-    //         username:'',
-    //         email:'',
-    //         password:''
-    //     })
-    //
-    //     // loads app.js on submit
-    //     ReactDOM.render(
-    //         <React.StrictMode>
-    //           <App />
-    //         </React.StrictMode>,
-    //         document.getElementById('root')
-    //     );
-    // }
-
-    /*
      * Uses the MoralisSDK to send and register a Moralis
      * object to a Moralis server
      */
     const handleSignUp = async (event) => {
-        event.preventDefault() // Prevents redirect after signup
+        event.preventDefault(); // Prevents redirect after signup
 
-        // Check for existing authentication
-        if (!isAuthenticated) {
-            // Sign up user using non-crypto (no wallet) Moralis signup
-            await signup(username, password, email);
+        // Set signup to true in use effect
+        setIsSignUp(true);
 
-            // Renders rest of NFT-Minter App
-            ReactDOM.render(
-                <React.StrictMode>
-                    <App/>
-                </React.StrictMode>,
-                document.getElementById('root')
-            );
-        }
+        // Authenticate will change user in state, so class will re-render
+        await authenticate({signingMessage: "Moralis Authentication"});
     }
 
     /*
@@ -115,21 +87,24 @@ const Login = () => {
     const handleLogin = async (event) => {
         event.preventDefault() // Prevents redirect after signup
 
+        // Set sign up to false in order to prevent incorrect choice on re-render
+        setIsSignUp(false);
+
         if (!isAuthenticated) {
             // Authenticate a user using Metamask, prompting them to login and sign
+            // Authenticate will change user in state, so class will re-render
             await authenticate({ signingMessage: "Moralis Authentication" });
-
-            // Check if the corresponding user exists in Moralis
-            // TODO
-
-            // Renders rest of NFT-Minter App
-            ReactDOM.render(
-                <React.StrictMode>
-                    <App/>
-                </React.StrictMode>,
-                document.getElementById('root')
-            );
         }
+    }
+
+    const renderApp = async () => {
+        // Renders rest of NFT-Minter App
+        ReactDOM.render(
+            <React.StrictMode>
+                <App/>
+            </React.StrictMode>,
+            document.getElementById('root')
+        );
     }
 
     return (
@@ -151,14 +126,12 @@ const Login = () => {
                             className='form-control form-group'
                         />
 
-
                         <input type='text' // email field
                             placeholder='E-mail'
                             onChange={changeEmail}
                             value={email}
                             className='form-control form-group'
                         />
-
 
                         <input type='password' // password field
                             placeholder='password'
@@ -167,7 +140,10 @@ const Login = () => {
                             className='form-control form-group'
                         />
 
-                        <input type='submit' className='btn btn-danger btn-block' value='Submit'/>
+                        <input type='submit' className='btn btn-danger btn-block' value='Sign up'/>
+                    </form>
+                    <form onSubmit={handleLogin}>
+                        <input type='submit' className='btn btn-danger btn-block' value='Login'/>
                     </form>
                 </div>
             </div>
