@@ -16,6 +16,7 @@ class WalletPage extends React.Component {
     }
 
     isWalletLinked(inputWallet) {
+        // Still needs to traverse the moralis db for assocated accounts...
         console.log("Is Wallet Linked!?")
         console.log("Wallet" + inputWallet)
         if (inputWallet != null) {
