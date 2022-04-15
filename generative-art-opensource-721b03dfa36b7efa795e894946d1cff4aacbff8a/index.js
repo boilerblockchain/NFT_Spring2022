@@ -158,15 +158,28 @@ const isDnaUnique = (_DnaList = [], _dna = []) => {
   return foundDna == undefined ? true : false;
 };
 
+
 const createDna = (_races, _race) => {
+  //console.log(_races)
+  //console.log(_race)
   let randNum = [];
   _races[_race].layers.forEach((layer) => {
-    let randElementNum = Math.floor(Math.random() * 100);
+    
+    let randElementNum = Math.floor(Math.random() * 100)+1;
     let num = 0;
+    
     layer.elements.forEach((element) => {
+      
+      
       if (randElementNum >= 100 - element.weight) {
+        console.log(element.name)
+        
+        console.log(randElementNum + ' >= ' + 100 + ' - ' + element.weight + ' = ' + (100-element.weight))
         num = element.id;
+        console.log(num)
+
       }
+      
     });
     randNum.push(num);
   });
