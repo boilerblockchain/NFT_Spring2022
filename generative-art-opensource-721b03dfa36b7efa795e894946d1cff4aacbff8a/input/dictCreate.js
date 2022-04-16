@@ -10,7 +10,9 @@ const startEditionFrom = 1;//don't change
 const endEditionAt = 10;//max tokens
 const editionSize = 10;//rarity
 
-const defaultWeight = 50
+var defaultWeight = 0
+
+const critical = require("./critical.json");
 
 const raceWeights = [
   {
@@ -20,7 +22,8 @@ const raceWeights = [
   },
 ];
 
-
+//Critical Features: always appear in image. All weights of pngs have to equal 100
+//Non-Critical Features: not necessary, so doesn't appear all the time. All weights of pngs within layer have to be less than 100
 const properties = {
   width: width,
   height: height,
@@ -48,7 +51,8 @@ const races = {
 for (let i = 0; i < inputFolders.length; i++) {
     if(inputFolders[i] != ('config.js') && inputFolders[i] != ('.DS_Store') && inputFolders[i] != ('filefinder.js') 
     && inputFolders[i] != ('dictCreate.js') && inputFolders[i] != ('editRarity.js') && inputFolders[i] != ('races.json')
-    && inputFolders[i] != ('editProperties.js') && inputFolders[i] != ('uploadFolders.js') && inputFolders[i] != ('properties.json')) {
+    && inputFolders[i] != ('editProperties.js') && inputFolders[i] != ('uploadFolders.js') && inputFolders[i] != ('properties.json')
+    && inputFolders[i] != ('critical.json')) {
         var currentFolder = fs.readdirSync('./input/'+inputFolders[i]);
         //console.log(currentFolder)
         
@@ -56,15 +60,23 @@ for (let i = 0; i < inputFolders.length; i++) {
         races['skull']['layers'][i]['name']=inputFolders[i]
 
         races['skull']['layers'][i]['elements']=[]
-        
+        console.log(inputFolders[i])
+
+        critical["critical"].push(inputFolders[i])
+
+        console.log(currentFolder.length)
+
+        defaultWeight = 100/currentFolder.length
         for (let j = 0; j < currentFolder.length; j++) {
-            var id = j
-            var location = `${dir}/`+inputFolders[i]+'/'+currentFolder[j]
-            var name = currentFolder[j].substring(0,currentFolder[j].length-4)
-            //console.log('id: ' + id)
-            //console.log('location: ' + location);
-            //console.log('name: ' + name)
-            races['skull']['layers'][i]['elements'][j]={'id':id,'name':name,'path':location,'weight':defaultWeight}
+          
+          var id = j
+          var location = `${dir}/`+inputFolders[i]+'/'+currentFolder[j]
+          var name = currentFolder[j].substring(0,currentFolder[j].length-4)
+          //console.log('id: ' + id)
+          //console.log('location: ' + location);
+          //console.log('name: ' + name)
+          
+          races['skull']['layers'][i]['elements'][j]={'id':id,'name':name,'path':location,'weight':defaultWeight}
 
 
         }
@@ -96,6 +108,11 @@ fs.writeFile("./input/properties.json", dictstringProperties, function(err, resu
 
 var dictstringRaces = JSON.stringify(races);
 fs.writeFile("./input/races.json", dictstringRaces, function(err, result) {
+  if(err) console.log('error', err);
+});
+
+var dictstringCritical = JSON.stringify(critical);
+fs.writeFile("./input/critical.json", dictstringCritical, function(err, result) {
   if(err) console.log('error', err);
 });
 
