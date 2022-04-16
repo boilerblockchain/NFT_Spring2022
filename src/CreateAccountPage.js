@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css"
-import App from './App';
 import MintPage from './MintPage'
 import ReactDOM from 'react-dom'; // can be used to swap pages
-import WalletPage from './WalletPage';
 
 import { useMoralis, MoralisProvider } from "react-moralis";
 
@@ -19,6 +17,7 @@ const CreateAccountPage = (props) => {
     const [fullName, setFullName] = useState('');
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
+    const [emailValid, setEmailValid] = useState(false);
     const [discord, setDiscord] = useState('');
     const [discordValid, setDiscordValid] = useState(false);
     const [password, setPassword] = useState('');
@@ -41,8 +40,20 @@ const CreateAccountPage = (props) => {
         setUsername(event.target.value)
     }
 
-    const changeEmail = async(event) => {
+    const changeEmail = (event) => {
         setEmail(event.target.value)
+        if (event.target.value.split("@")[1] === "purdue.edu") {
+            setEmailValid(true)
+        } else {
+            setEmailValid(false)
+        }
+    }
+
+    const checkEmail = (validity) => {
+        if (validity) {
+            return "";
+        }
+        return "Invalid Purdue email address.";
     }
 
     const reverse = (str) => {  
@@ -75,13 +86,25 @@ const CreateAccountPage = (props) => {
     const checkDiscord = (validity) => {
         if (validity === true) {
             return "";
-        } else {
-            return "Invalid Discord, must be in proper form (i.e. Name#1234)"
-        }
+        } 
+        return "Invalid Discord, must be in proper form (i.e. Name#1234)"
     }
 
     const changePassword = async(event) => {
         setPassword(event.target.value)
+    }
+
+    const checkFields = () => {
+        if (fullName != "") {
+            if (username != "") {
+                if (emailValid == true && discordValid == true) {
+                    if (password != "") {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     /*
@@ -91,7 +114,7 @@ const CreateAccountPage = (props) => {
      */
     const onSubmit = async(event) => {
         event.preventDefault() // Prevents redirect after signup
-        if  (discordValid === true) {
+        if  (checkFields() == true) {
             await authenticate({signingMessage: "Moralis Authentication"})
             await setUserData({
                 "fullName": fullName,
@@ -142,6 +165,8 @@ const CreateAccountPage = (props) => {
                         value={email}
                         className='form-control form-group' 
                         />
+
+                        <p>{checkEmail(emailValid)}</p>
 
                         <input type='text' // discord field
                         placeholder='Discord'

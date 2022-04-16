@@ -5,6 +5,7 @@ import App from './App';
 import WalletPage from './WalletPage';
 import NewWalletPage from './NewWalletPage'
 import Login from './Login'
+import CreateAccountPage from './CreateAccountPage'
 import reportWebVitals from './reportWebVitals';
 import { Wallet } from 'ethers';
 import { MoralisProvider } from "react-moralis";
@@ -12,9 +13,8 @@ import { MoralisProvider } from "react-moralis";
 ReactDOM.render(
   <React.StrictMode>
       <MoralisProvider serverUrl={process.env.REACT_APP_MORALIS_SERVER_URL} appId={process.env.REACT_APP_MORALIS_APP_ID}>
-          <NewWalletPage />
+          <CreateAccountPage />
       </MoralisProvider>
-
   </React.StrictMode>,
   document.getElementById('root')
 );
