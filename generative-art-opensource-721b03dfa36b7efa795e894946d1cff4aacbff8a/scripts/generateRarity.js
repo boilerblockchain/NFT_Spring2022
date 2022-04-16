@@ -1,7 +1,7 @@
-const config = require("../settings/config.json")
-const path = require("path");
 const fs = require("fs");
 
+const config = require("../settings/config.json")
+const path = require("path");
 const base = process.cwd()
 const layersBasePath = path.join(base, "/layers")
 
@@ -40,6 +40,7 @@ const generateConfig = async () => {
 
     saveConfig(rarityData)
 }
+
 
 const saveConfig = (_config) => {
     fs.writeFileSync(`${base}/settings/rarity.json`, JSON.stringify(_config, null, 2))

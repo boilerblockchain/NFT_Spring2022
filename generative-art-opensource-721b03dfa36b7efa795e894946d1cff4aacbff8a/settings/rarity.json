@@ -1,1 +1,142 @@
-{"layers":[{"name":"1-background","attributes":[{"name":"LightBlue.png","weight":10},{"name":"Orange.png","weight":10}]},{"name":"2-suit","attributes":[{"name":"Orange.png","weight":10},{"name":"Regular.png","weight":10}]},{"name":"3-shoulder","attributes":[{"name":"LunaFlag.png","weight":10},{"name":"USA.png","weight":10}]},{"name":"4-pin","attributes":[{"name":"LunaBluePin.png","weight":10},{"name":"Smiley.png","weight":10}]},{"name":"5-skin","attributes":[{"name":"Skull.png","weight":10}]},{"name":"6-facial-hair","attributes":[{"name":"NoFacialHair.png","weight":10}]},{"name":"7-mask","attributes":[{"name":"Mask.png","weight":10},{"name":"NoMask.png","weight":10}]},{"name":"8-hair","attributes":[{"name":"BlondeBun.png","weight":10},{"name":"Pink.png","weight":10}]},{"name":"90-headwear","attributes":[{"name":"GlassDome.png","weight":10},{"name":"Headset.png","weight":10},{"name":"Helmet.png","weight":10},{"name":"NFTHelmet.png","weight":10},{"name":"NoHeadwear.png","weight":10},{"name":"Robber.png","weight":10},{"name":"Stealth.png","weight":100}]},{"name":"9-accessories","attributes":[{"name":"NoAcc.png","weight":10}]}]}
+{
+  "layers": [
+    {
+      "name": "1-background",
+      "attributes": [
+        {
+          "name": "LightBlue.png",
+          "weight": 10
+        },
+        {
+          "name": "Orange.png",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "name": "2-suit",
+      "attributes": [
+        {
+          "name": "Orange.png",
+          "weight": 10
+        },
+        {
+          "name": "Regular.png",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "name": "3-shoulder",
+      "attributes": [
+        {
+          "name": "LunaFlag.png",
+          "weight": 10
+        },
+        {
+          "name": "USA.png",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "name": "4-pin",
+      "attributes": [
+        {
+          "name": "LunaBluePin.png",
+          "weight": 10
+        },
+        {
+          "name": "Smiley.png",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "name": "5-skin",
+      "attributes": [
+        {
+          "name": "Skull.png",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "name": "6-facial-hair",
+      "attributes": [
+        {
+          "name": "NoFacialHair.png",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "name": "7-mask",
+      "attributes": [
+        {
+          "name": "Mask.png",
+          "weight": 10
+        },
+        {
+          "name": "NoMask.png",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "name": "8-hair",
+      "attributes": [
+        {
+          "name": "BlondeBun.png",
+          "weight": 10
+        },
+        {
+          "name": "Pink.png",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "name": "9-accessories",
+      "attributes": [
+        {
+          "name": "NoAcc.png",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "name": "90-headwear",
+      "attributes": [
+        {
+          "name": "GlassDome.png",
+          "weight": 10
+        },
+        {
+          "name": "Headset.png",
+          "weight": 10
+        },
+        {
+          "name": "Helmet.png",
+          "weight": 10
+        },
+        {
+          "name": "NFTHelmet.png",
+          "weight": 10
+        },
+        {
+          "name": "NoHeadwear.png",
+          "weight": 10
+        },
+        {
+          "name": "Robber.png",
+          "weight": 10
+        },
+        {
+          "name": "Stealth.png",
+          "weight": 10
+        }
+      ]
+    }
+  ]
+}

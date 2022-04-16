@@ -13,7 +13,7 @@ const newEndEditionAt = 20;
 
 const races = require("./races.json");
 
-const properties = require("./properties.json");
+const properties = require("../other_scripts/properties.json");
 const raceWeights = properties['raceWeights']
 raceWeights[0]['to'] = newEditionSize
 properties['raceWeights'] = raceWeights

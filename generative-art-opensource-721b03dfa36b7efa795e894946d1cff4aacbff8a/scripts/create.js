@@ -82,6 +82,7 @@ const createImage = async () => {
             
 
             for (var x = 0; x < attributes.length; x++) { //iterating through each element of each layer: nested for loop
+                console.log(rarity.layers[i].attributes[x])
                 totalWeight += rarity.layers[i].attributes[x].weight //adds up weight to get totalWeight for each layer
             }
             
