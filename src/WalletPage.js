@@ -4,6 +4,8 @@ import logo from './assets/logo3.png';
 import './styles/App.css';
 import App from './App.js'
 import CreateAccount from "./CreateAccount";
+import SignUpPage from "./SignUpPage.js";
+import MintPage from "./MintPage.js";
 
 
 class WalletPage extends React.Component {
@@ -11,6 +13,7 @@ class WalletPage extends React.Component {
         super(props);
     
         this.state = {
+          
           wallets: null
         };
     }
@@ -27,6 +30,11 @@ class WalletPage extends React.Component {
         }
     }
 
+
+          wallets: [{}, {}]
+        };
+    }
+
     connectWallet = async () => {
         try {
             const { ethereum } = window;
@@ -38,6 +46,7 @@ class WalletPage extends React.Component {
             }
 
             //requesting access to the account
+
             var wallet = null
             wallet = await ethereum.request({ method: "eth_requestAccounts" });
 
@@ -54,6 +63,23 @@ class WalletPage extends React.Component {
                 ReactDOM.render(
                     <React.StrictMode>
                     <CreateAccount walletProp={wallet}></CreateAccount>
+
+            const wallet = await ethereum.request({ method: "eth_requestAccounts" });
+
+            //printing public address
+            this.setState({
+                wallets: [wallet]
+            });
+            console.log("Connected", this.wallets);
+            //console.log(this.accounts.length);
+    
+
+            if ((ethereum.isConnected())) { // Go to create acct page
+                console.log("Create account!")
+                ReactDOM.render(
+                    <React.StrictMode>
+                        <SignUpPage />
+
                     </React.StrictMode>,
                     document.getElementById('root')
                 );
@@ -61,7 +87,11 @@ class WalletPage extends React.Component {
                 console.log("Mint!")
                 ReactDOM.render(
                     <React.StrictMode>
+
                     <WalletPage />
+
+                        <MintPage />
+
                     </React.StrictMode>,
                     document.getElementById('root')
                 );
@@ -82,12 +112,21 @@ class WalletPage extends React.Component {
         <div className="WalletPage">
             <img src={logo} className="App-logo" alt="logo"/>
             <p>
+
                 <code className="boilerblockchain-text">BoilerBlockchain</code>
             </p>
             <div className="connect-container">
                 <div className="header-container">
                     <p className="mint-your-own-text">MINT YOUR OWN NFT</p>
                     <button className="connect-wallet-btn" onClick = {this.connectWallet}> CONNECT WALLET </button>    
+
+                <code>BoilerBlockchain</code>
+            </p>
+            <div className="container">
+                <div className="header-container">
+                    <p className="header gradient-text">Mint Your Own NFT</p>
+                        <button onClick = {this.connectWallet}> Connect Wallet </button>    
+
                 </div>
             </div>
         </div>

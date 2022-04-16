@@ -10,6 +10,17 @@ import { Wallet } from 'ethers';
 ReactDOM.render(
   <React.StrictMode>
     <WalletPage />
+
+import Login from './Login'
+import reportWebVitals from './reportWebVitals';
+import { MoralisProvider } from "react-moralis";
+
+ReactDOM.render(
+  <React.StrictMode>
+      <MoralisProvider serverUrl={process.env.REACT_APP_MORALIS_SERVER_URL} appId={process.env.REACT_APP_MORALIS_APP_ID}>
+          <Login />
+      </MoralisProvider>
+
   </React.StrictMode>,
   document.getElementById('root')
 );

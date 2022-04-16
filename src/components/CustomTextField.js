@@ -27,6 +27,7 @@ class TextField extends React.Component {
     return (
       <div>
           <input
+          type ="text"
           placeholder={this.text}
           onChange={this.getInputValue}
           />
