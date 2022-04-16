@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 import logo from './assets/logo3.png';
 import './styles/App.css';
@@ -6,17 +6,17 @@ import App from './App.js'
 import CreateAccount from "./CreateAccount";
 import SignUpPage from "./SignUpPage.js";
 import MintPage from "./MintPage.js";
-
+import { useMoralis } from "react-moralis";
 
 class WalletPage extends React.Component {
     constructor(props) {
-        super(props);
-    
-        this.state = {
-          
-          wallets: null
+        super(props)
+        this.state = {    
+          wallets: null,
+          authenticate: false
         };
     }
+
 
     isWalletLinked(inputWallet) {
         // Still needs to traverse the moralis db for assocated accounts...
@@ -30,12 +30,8 @@ class WalletPage extends React.Component {
         }
     }
 
-
-          wallets: [{}, {}]
-        };
-    }
-
     connectWallet = async () => {
+        //useMoralis.authenticate()
         try {
             const { ethereum } = window;
             
@@ -62,9 +58,10 @@ class WalletPage extends React.Component {
                 console.log("Create account!")
                 ReactDOM.render(
                     <React.StrictMode>
-                    <CreateAccount walletProp={wallet}></CreateAccount>
-
-            const wallet = await ethereum.request({ method: "eth_requestAccounts" });
+                        <CreateAccount walletProp={wallet}></CreateAccount>
+                    </React.StrictMode>
+                );
+            }
 
             //printing public address
             this.setState({
@@ -79,7 +76,6 @@ class WalletPage extends React.Component {
                 ReactDOM.render(
                     <React.StrictMode>
                         <SignUpPage />
-
                     </React.StrictMode>,
                     document.getElementById('root')
                 );
@@ -87,23 +83,19 @@ class WalletPage extends React.Component {
                 console.log("Mint!")
                 ReactDOM.render(
                     <React.StrictMode>
-
-                    <WalletPage />
-
                         <MintPage />
-
                     </React.StrictMode>,
                     document.getElementById('root')
                 );
             }
         } catch (error) {
-        console.log(error)
+            console.log(error)
         }
       }
 
-      getAddress = () => {
+    getAddress = () => {
         return this.state.accounts[0]
-      }
+    }
     
     
    
@@ -112,21 +104,12 @@ class WalletPage extends React.Component {
         <div className="WalletPage">
             <img src={logo} className="App-logo" alt="logo"/>
             <p>
-
                 <code className="boilerblockchain-text">BoilerBlockchain</code>
             </p>
             <div className="connect-container">
                 <div className="header-container">
                     <p className="mint-your-own-text">MINT YOUR OWN NFT</p>
                     <button className="connect-wallet-btn" onClick = {this.connectWallet}> CONNECT WALLET </button>    
-
-                <code>BoilerBlockchain</code>
-            </p>
-            <div className="container">
-                <div className="header-container">
-                    <p className="header gradient-text">Mint Your Own NFT</p>
-                        <button onClick = {this.connectWallet}> Connect Wallet </button>    
-
                 </div>
             </div>
         </div>
