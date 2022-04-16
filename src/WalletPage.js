@@ -1,21 +1,37 @@
-import React from "react";
+import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 import logo from './assets/logo3.png';
 import './styles/App.css';
 import App from './App.js'
+import CreateAccount from "./CreateAccount";
 import SignUpPage from "./SignUpPage.js";
 import MintPage from "./MintPage.js";
-
+import { useMoralis } from "react-moralis";
 
 class WalletPage extends React.Component {
     constructor(props) {
-        super(props);
-    
-        this.state = {
-          wallets: [{}, {}]
+        super(props)
+        this.state = {    
+          wallets: null,
+          authenticate: false
         };
     }
+
+
+    isWalletLinked(inputWallet) {
+        // Still needs to traverse the moralis db for assocated accounts...
+        console.log("Is Wallet Linked!?")
+        console.log("Wallet" + inputWallet)
+        if (inputWallet != null) {
+            console.log("True")
+            return true
+        } else {
+            return false
+        }
+    }
+
     connectWallet = async () => {
+        //useMoralis.authenticate()
         try {
             const { ethereum } = window;
             
@@ -26,7 +42,26 @@ class WalletPage extends React.Component {
             }
 
             //requesting access to the account
-            const wallet = await ethereum.request({ method: "eth_requestAccounts" });
+
+            var wallet = null
+            wallet = await ethereum.request({ method: "eth_requestAccounts" });
+
+            //printing public address
+            this.setState({
+                wallets: wallet
+            });
+            //console.log(this.accounts.length);
+    
+
+            //if (!(ethereum.isConnected())) { // Go to create acct page
+            if (this.isWalletLinked(wallet)) {
+                console.log("Create account!")
+                ReactDOM.render(
+                    <React.StrictMode>
+                        <CreateAccount walletProp={wallet}></CreateAccount>
+                    </React.StrictMode>
+                );
+            }
 
             //printing public address
             this.setState({
@@ -54,13 +89,13 @@ class WalletPage extends React.Component {
                 );
             }
         } catch (error) {
-        console.log(error)
+            console.log(error)
         }
       }
 
-      getAddress = () => {
+    getAddress = () => {
         return this.state.accounts[0]
-      }
+    }
     
     
    
@@ -69,12 +104,12 @@ class WalletPage extends React.Component {
         <div className="WalletPage">
             <img src={logo} className="App-logo" alt="logo"/>
             <p>
-                <code>BoilerBlockchain</code>
+                <code className="boilerblockchain-text">BoilerBlockchain</code>
             </p>
-            <div className="container">
+            <div className="connect-container">
                 <div className="header-container">
-                    <p className="header gradient-text">Mint Your Own NFT</p>
-                        <button onClick = {this.connectWallet}> Connect Wallet </button>    
+                    <p className="mint-your-own-text">MINT YOUR OWN NFT</p>
+                    <button className="connect-wallet-btn" onClick = {this.connectWallet}> CONNECT WALLET </button>    
                 </div>
             </div>
         </div>

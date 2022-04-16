@@ -25,6 +25,8 @@ class MintPage extends React.Component {
         this.NewArray = this.NewArray.bind(this)
         this.OnInputchange = this.OnInputchange.bind(this);
     }
+
+
     imagesSelectedHandler = (event) => {
         this.setState({ images: event.target.files })
         console.log("upload file " + event.name)

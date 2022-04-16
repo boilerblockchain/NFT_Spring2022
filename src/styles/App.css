@@ -4,9 +4,19 @@
 
 .App-logo {
   height: 10vmin;
-  padding-right: 90%;
+  padding-right: 0%;
   padding-top: 1%;
   pointer-events: none;
+  /*animation: App-logo-spin 1s infinite linear;*/
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -38,6 +48,9 @@
 .App-link {
   color: #61dafb;
 }
+
+/* Connect wallet page*/
+
 .imgPrev{
   width: 200px;
   height: 100px;
@@ -45,11 +58,67 @@
   padding: 0.75rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.boilerblockchain-text {
+  color:rgb(255, 255, 255);
 }
+
+.connect-container {
+  text-align: center;
+}
+
+.WalletPage {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: #282c34;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap');
+
+.mint-your-own-text {
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  font-size: 85px;
+  letter-spacing: 4px;
+  transition: 1s;
+}
+
+.mint-your-own-text:hover {
+  font-family: 'Poppins', sans-serif;
+  color: #7f4e4e;
+  font-size: 90px;
+  letter-spacing: 4px;
+  transition: 1s;
+}
+
+.connect-wallet-btn {
+  background-color: transparent;
+  border: 2px solid #4CAF50;
+  border-radius: 25px;
+  font-family: 'Poppins', bold;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition: 1s;
+}
+
+.connect-wallet-btn:hover {
+  background-color: #4CAF50; /* Green */
+  border: 2px solid #4CAF50;
+  border-radius: 25px;
+  font-family: 'Poppins', bold;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  transition: 1s;
+}
+
