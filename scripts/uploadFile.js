@@ -1,7 +1,7 @@
 const axios = require("axios");
 const fs = require("fs");
 const FormData = require("form-data");
-
+require('dotenv').config();
 
 
 

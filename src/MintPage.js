@@ -28,37 +28,38 @@ class MintPage extends React.Component {
 
 
     imagesSelectedHandler = (event) => {
-        this.setState({ images: event.target.files })
+        this.setState({images: event.target.files})
         console.log("upload file " + event.name)
     }
     layersSelectedHandler = (event) => {
-        this.setState({ layers: event.target.files })
+        this.setState({layers: event.target.files})
         console.log("upload file " + event.name)
     }
-    contractSelection = async() => {
-      this.setState ({
-        contractDropdown: true
-      });
-      console.log(this.state.contractDropdown)
+    contractSelection = async () => {
+        this.setState({
+            contractDropdown: true
+        });
+        console.log(this.state.contractDropdown)
     }
-    storageSelection = async() => {
-        this.setState ({
+    storageSelection = async () => {
+        this.setState({
             storageDropdown: true
         });
         console.log(this.state.storageDropdown)
     }
-    raritySelection = async() => {
-        this.setState ({
-           rarityDropdown: true 
+    raritySelection = async () => {
+        this.setState({
+            rarityDropdown: true
         })
         console.log(this.state.rariryDropdown)
     }
 
     OnInputchange(event) {
         this.setState({
-        [event.target.name]: event.target.value
+            [event.target.name]: event.target.value
         });
     }
+
     NewArray(size) {
         var x = [];
         for (var i = 0; i < size; ++i) {
@@ -113,22 +114,21 @@ class MintPage extends React.Component {
         const contractOptions = ["721", "1155"];
         const storageOptions = ["On-chain", "Off-chain"];
         const rarityFields = this.NewArray(this.state.layers.length)
-        
 
 
         const onContractClicked = value => () => {
-            this.setState ({
+            this.setState({
                 contractDropdown: false,
                 contractType: value
-              });
+            });
             contractDropdownPlaceholder = value;
             console.log(this.state.contractType);
         };
         const onStorageClicked = value => () => {
-            this.setState ({
+            this.setState({
                 storageDropdown: false,
                 storageType: value
-              });
+            });
             storageDropdownPlaceholder = value;
             console.log(this.state.contractType);
         };
@@ -139,105 +139,110 @@ class MintPage extends React.Component {
         return (
             <div className="MintPage">
                 <img src={logo} className="App-logo" alt="logo"/>
-            <p>
-                <code>BoilerBlockchain</code>
-            </p>
-            <div className="container">
-            <center>
-                <div className="header-container">
-                    <p className="header gradient-text">Mint Your Own NFT</p>
-                    < form >
-                        <div>
-                            <h2>Upload images</h2>
-                        </div>
-                        <h3>Images</h3>
-                        <input type="file" multiple accept="image/*" onChange={this.imagesSelectedHandler} />
-                        <div>
-                            <h2>Upload layers{console.log(this.state.images)}</h2>
-                        </div>
-                        <h3>Layers {console.log(this.state.layers)}</h3>
-                            <input type="file" multiple onChange={this.layersSelectedHandler} />
+                <p>
+                    <code>BoilerBlockchain</code>
+                </p>
+                <div className="container">
+                    <center>
+                        <div className="header-container">
+                            <p className="header gradient-text">Mint Your Own NFT</p>
+                            < form>
+                                <div>
+                                    <h2>Upload images</h2>
+                                </div>
+                                <h3>Images</h3>
+                                <input type="file" multiple accept="image/*" onChange={this.imagesSelectedHandler}/>
+                                <div>
+                                    <h2>Upload layers{console.log(this.state.images)}</h2>
+                                </div>
+                                <h3>Layers {console.log(this.state.layers)}</h3>
+                                <input type="file" multiple onChange={this.layersSelectedHandler}/>
 
-                        <DropDownContainer>
-                            <DropDownHeader onClick={this.raritySelection}>Layer Rarities</DropDownHeader>
-                            {this.state.rarityDropdown && (
-                            <DropDownListContainer>
-                                <DropDownList>
-                                <form>
-                                {rarityFields.map(option => (
-                                    <input  
-                                    type = "text"
-                                    name="rarity" 
-                                    label = {this.state.layers[option].name}
-                                    placeholder= {this.state.layers[option].name}
-                                    value={this.state.rarities[option]}
-                                    onChange={this.OnInputchange}  
-                                    />
-                                ))}
-                                </form>
-                                </DropDownList>
-                            </DropDownListContainer>
-                            )}
-                        </DropDownContainer>
-                        <DropDownContainer>
-                            <DropDownHeader onClick={this.contractSelection}>{contractDropdownPlaceholder}</DropDownHeader>
-                            {this.state.contractDropdown && (
-                            <DropDownListContainer>
-                                <DropDownList>
-                                {contractOptions.map(option => (
-                                    <ListItem onClick={onContractClicked(option)} key={Math.random()}>
-                                    {option}
-                                    </ListItem>
-                                ))}
-                                </DropDownList>
-                            </DropDownListContainer>
-                            )}
-                        </DropDownContainer>
-                        <DropDownContainer>
-                            <DropDownHeader onClick={this.storageSelection}>{storageDropdownPlaceholder}</DropDownHeader>
-                            {this.state.storageDropdown && (
-                            <DropDownListContainer>
-                                <DropDownList>
-                                {storageOptions.map(option => (
-                                    <ListItem onClick={onStorageClicked(option)} key={Math.random()}>
-                                    {option}
-                                    </ListItem>
-                                ))}
-                                </DropDownList>
-                            </DropDownListContainer>
-                            )}
-                        </DropDownContainer>
-                </form>    
+                                <DropDownContainer>
+                                    <DropDownHeader onClick={this.raritySelection}>Layer Rarities</DropDownHeader>
+                                    {this.state.rarityDropdown && (
+                                        <DropDownListContainer>
+                                            <DropDownList>
+                                                <form>
+                                                    {rarityFields.map(option => (
+                                                        <input
+                                                            type="text"
+                                                            name="rarity"
+                                                            label={this.state.layers[option].name}
+                                                            placeholder={this.state.layers[option].name}
+                                                            value={this.state.rarities[option]}
+                                                            onChange={this.OnInputchange}
+                                                        />
+                                                    ))}
+                                                </form>
+                                            </DropDownList>
+                                        </DropDownListContainer>
+                                    )}
+                                </DropDownContainer>
+                                <DropDownContainer>
+                                    <DropDownHeader
+                                        onClick={this.contractSelection}>{contractDropdownPlaceholder}</DropDownHeader>
+                                    {this.state.contractDropdown && (
+                                        <DropDownListContainer>
+                                            <DropDownList>
+                                                {contractOptions.map(option => (
+                                                    <ListItem onClick={onContractClicked(option)} key={Math.random()}>
+                                                        {option}
+                                                    </ListItem>
+                                                ))}
+                                            </DropDownList>
+                                        </DropDownListContainer>
+                                    )}
+                                </DropDownContainer>
+                                <DropDownContainer>
+                                    <DropDownHeader
+                                        onClick={this.storageSelection}>{storageDropdownPlaceholder}</DropDownHeader>
+                                    {this.state.storageDropdown && (
+                                        <DropDownListContainer>
+                                            <DropDownList>
+                                                {storageOptions.map(option => (
+                                                    <ListItem onClick={onStorageClicked(option)} key={Math.random()}>
+                                                        {option}
+                                                    </ListItem>
+                                                ))}
+                                            </DropDownList>
+                                        </DropDownListContainer>
+                                    )}
+                                </DropDownContainer>
+                            </form>
+                        </div>
+                        <div>
+                            <input
+                                type="text"
+                                name="totalNFTs"
+                                placeholder="Total # NFTs"
+                                value={this.state.totalNFTs}
+                                onChange={this.OnInputchange}
+                            />
+                        </div>
+                        <div>
+                            <h3>{this.state.contractType}</h3>
+                        </div>
+                        <h3>{this.state.storageType}</h3>
+                        <h3>{this.state.totalNFTs}</h3>
+                        <div>
+                            <button> Preview Collection</button>
+                        </div>
+
+                    </center>
                 </div>
-                <div>
-                    <input 
-                        type="text" 
-                        name="totalNFTs" 
-                        placeholder="Total # NFTs"
-                        value={this.state.totalNFTs}
-                        onChange={this.OnInputchange}
-                    />
-                </div>
-                <div>
-                <h3>{this.state.contractType}</h3>
-                </div>
-                <h3>{this.state.storageType}</h3>
-                <h3>{this.state.totalNFTs}</h3>
-                <div><button> Preview Collection </button></div>
-               
-                </center>
+
             </div>
-            
-        </div>
         )
     }
 }
+
 //if (event.target.files) {
-  //  const layerArray = Array.from(event.target.files).map((file)=> URL.createObjectURL(file))
-  //  console.log(layerArray)
-  //  this.setState ({
-  //      layers: layerArray
-  //  })
+//  const layerArray = Array.from(event.target.files).map((file)=> URL.createObjectURL(file))
+//  console.log(layerArray)
+//  this.setState ({
+//      layers: layerArray
+//  })
 
 //}
 export default MintPage;
