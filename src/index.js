@@ -6,6 +6,7 @@ import WalletPage from './WalletPage';
 import NewWalletPage from './NewWalletPage'
 import Login from './Login'
 import CreateAccountPage from './CreateAccountPage'
+import NewMintPage from './NewMintPage'
 import reportWebVitals from './reportWebVitals';
 import { Wallet } from 'ethers';
 import { MoralisProvider } from "react-moralis";

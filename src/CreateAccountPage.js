@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css"
-import MintPage from './MintPage'
+import NewMintPage from './NewMintPage'
 import logo from './assets/logo3.png';
 import ReactDOM from 'react-dom'; // can be used to swap pages
 
@@ -129,7 +129,7 @@ const CreateAccountPage = (props) => {
             ReactDOM.render(
                 <React.StrictMode>
                     <MoralisProvider serverUrl={process.env.REACT_APP_MORALIS_SERVER_URL} appId={process.env.REACT_APP_MORALIS_APP_ID}>
-                        <MintPage />
+                        <NewMintPage />
                     </MoralisProvider>
                 </React.StrictMode>,
                 document.getElementById('root')
