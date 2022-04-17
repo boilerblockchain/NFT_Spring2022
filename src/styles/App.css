@@ -51,6 +51,8 @@
 
 /* Connect wallet page*/
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap');
+
 .imgPrev{
   width: 200px;
   height: 100px;
@@ -75,8 +77,6 @@
   right: 0px;
   background-color: #282c34;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap');
 
 .mint-your-own-text {
   font-family: 'Poppins', sans-serif;
@@ -120,5 +120,71 @@
   display: inline-block;
   font-size: 20px;
   transition: 1s;
+}
+
+/* account setup page */
+
+.Account-setup-page {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: #282c34;
+}
+
+.account-setup-text {
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  font-size: 50px;
+  letter-spacing: 2px;
+  transition: 1s;
+}
+
+.account-setup-text:hover {
+  font-family: 'Poppins', sans-serif;
+  color: #7f4e4e;
+  font-size: 55px;
+  letter-spacing: 2px;
+  transition: 1s;
+}
+
+.form-field {
+  width: 20%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid green;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  padding-left: 2%;
+  transition: 0.5s
+}
+
+.form-field:focus {
+  width: 30%;
+  outline: none;
+  border: none;
+  padding-left: 10%;
+  border-bottom: 2px solid green;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  font-style: bold;
+  transition: 0.5s;
+}
+
+.form-field::placeholder {
+  color: gray;
+  font-family: 'Poppins';
+  font-size: x-small;
+}
+
+.err-text {
+  color: red;
+  font-size: x-small;
+  font-style: italic;
+}
+
+.form-trailing-space {
+  padding-top: 5%;
 }
 

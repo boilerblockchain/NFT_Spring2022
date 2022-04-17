@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css"
 import MintPage from './MintPage'
+import logo from './assets/logo3.png';
 import ReactDOM from 'react-dom'; // can be used to swap pages
 
 import { useMoralis, MoralisProvider } from "react-moralis";
@@ -141,51 +142,60 @@ const CreateAccountPage = (props) => {
 
     return (
         <div>
-            <div className='container'>
+            <div className='Account-setup-page'>
+                <img src={logo} className="App-logo" alt="logo"/>
+                <p>
+                    <code className="boilerblockchain-text">BoilerBlockchain</code>
+                </p>
+                <p className="account-setup-text">ACCOUNT SETUP</p>
                 <div className='form-div'>
                     <form onSubmit={onSubmit}>
                         <input type='text'   // full name field
-                        placeholder='Full Name'
+                        placeholder='full name'
                         onChange={changeFullName}
                         value={fullName}
-                        className='form-control form-group' // bootstrap style classes
+                        className='form-field' // bootstrap style classes
                         />      
 
+                        <div className='form-trailing-space'></div>
+
                         <input type='text' // username field
-                        placeholder='Username'
+                        placeholder='username'
                         onChange={changeUsername}
                         value={username}
-                        className='form-control form-group' 
+                        className='form-field' 
                         />
 
+                        <div className='form-trailing-space'></div>
 
                         <input type='text' // email field
-                        placeholder='E-mail'
+                        placeholder='email'
                         onChange={changeEmail}
                         value={email}
-                        className='form-control form-group' 
+                        className='form-field' 
                         />
 
-                        <p>{checkEmail(emailValid)}</p>
+                        <p className='err-text'>{checkEmail(emailValid)}</p>
 
                         <input type='text' // discord field
-                        placeholder='Discord'
+                        placeholder='discord'
                         onChange={changeDiscord}
                         value={discord}
-                        className='form-control form-group' 
+                        className='form-field' 
                         />
 
-                        <p>{checkDiscord(discordValid)}</p>
+                        <p className='err-text'>{checkDiscord(discordValid)}</p>
 
-                        <input type='password' // password field
+                        <input type='Password' // password field
                         placeholder='password'
                         onChange={changePassword}
                         value={password}
-                        className='form-control form-group' 
+                        className='form-field' 
                         />
 
+                        <div className='form-trailing-space'></div>
 
-                        <input type='submit' className='btn btn-danger btn-block' value='Submit'/>
+                        <button className="connect-wallet-btn" onClick = {onSubmit}> CREATE ACCOUNT </button> 
                     </form>
                 </div>
             </div>

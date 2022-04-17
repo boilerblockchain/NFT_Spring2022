@@ -13,7 +13,7 @@ import { MoralisProvider } from "react-moralis";
 ReactDOM.render(
   <React.StrictMode>
       <MoralisProvider serverUrl={process.env.REACT_APP_MORALIS_SERVER_URL} appId={process.env.REACT_APP_MORALIS_APP_ID}>
-          <CreateAccountPage />
+          <NewWalletPage />
       </MoralisProvider>
   </React.StrictMode>,
   document.getElementById('root')
