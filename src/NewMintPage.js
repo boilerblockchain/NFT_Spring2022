@@ -71,10 +71,19 @@ const NewMintPage = () => {
                     pinata_secret_api_key: process.env.REACT_APP_PINATA_SECRET_API_KEY,
                 },
             });
-
+            await renderURLs(urls)
             // Append proper url to urls array
             urls.push('https://gateway.pinata.cloud/ipfs/' + res.data.IpfsHash)
         }
+    }
+
+    const renderURLs = async (urls) => {
+        let renders = []
+        for (let i = 0; i < urls.length; i++) {
+            renders.push(<text>NFT #{i + 1} can be retrieved <a href={urls[i]} target="_blank">here</a>.</text>)
+            renders.push(<br/>)
+        }
+        setRenderedURLs(renders);
     }
 
     const askContractToMintNFT = async () => {

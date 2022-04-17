@@ -146,6 +146,7 @@ const App = () => {
     const pinFileToIPFS = async () => {
         // Array for storing all URLs returned from Pinata
         let urls = []
+        console.log(NFTs.length)
 
         // Loop through entire NFTs state array
         for (let i = 0; i < NFTs.length; i++) {
@@ -165,6 +166,7 @@ const App = () => {
 
             // Append proper url to urls array
             urls.push('https://gateway.pinata.cloud/ipfs/' + res.data.IpfsHash)
+            console.out('https://gateway.pinata.cloud/ipfs/' + res.data.IpfsHash)
         }
 
         await renderURLs(urls)
@@ -202,7 +204,7 @@ const App = () => {
 
 
           console.log("Opening wallet to pay gas fees...")
-          let nftTxn = await connectedContract.createNFT();
+          let nftTxn = await connectedContract.createNFT( );
           setMining(true);
           console.log("Mining...")
 
