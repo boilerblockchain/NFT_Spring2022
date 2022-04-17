@@ -177,6 +177,8 @@ const App = () => {
         // Pin NFTs to IPFS and obtain IPFS_URLs
         let urls = await pinFileToIPFS();
 
+
+
         const { ethereum } = window;
 
         if (ethereum) {
@@ -193,14 +195,17 @@ const App = () => {
 
 
           console.log("Opening wallet to pay gas fees...")
-          let nftTxn = await connectedContract.createNFT();
-          setMining(true);
-          console.log("Mining...")
+          for(var i = 0; i < urls.length; i++) {
+            let nftTxn = await connectedContract.createNFT(urls[i]);
+            setMining(true);
+            console.log("Mining...")
 
-          await nftTxn.wait()
-
-          console.log(`Mined, see transaction: https://rinkeby.etherscan.io/tx/${nftTxn.hash}`);
+            await nftTxn.wait()
+            console.log(`Mined, see transaction: https://rinkeby.etherscan.io/tx/${nftTxn.hash}`);
           console.log(OPENSEA_LINK)
+          }
+
+          
           setMining(false);
           setLoading(false);
           setAvailable(true);
