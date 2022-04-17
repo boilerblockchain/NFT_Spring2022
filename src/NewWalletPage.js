@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import logo from './assets/logo3.png';
 import './styles/App.css';
 import CreateAccountPage from "./CreateAccountPage";
-import MintPage from "./MintPage.js";
+import NewMintPage from "./NewMintPage.js";
 import { useMoralis } from "react-moralis";
 import { MoralisProvider } from "react-moralis";
 
@@ -36,7 +36,7 @@ const NewWalletPage = () => {
             ReactDOM.render(
                 <React.StrictMode>
                     <MoralisProvider serverUrl={process.env.REACT_APP_MORALIS_SERVER_URL} appId={process.env.REACT_APP_MORALIS_APP_ID}>
-                        <MintPage />
+                        <NewMintPage />
                     </MoralisProvider>
                 </React.StrictMode>,
                 document.getElementById('root')
@@ -47,7 +47,7 @@ const NewWalletPage = () => {
     
 
     return (
-    <div className="WalletPage">
+    <div className="MintPage">
         <img src={logo} className="App-logo" alt="logo"/>
         <p>
             <code className="boilerblockchain-text">BoilerBlockchain</code>

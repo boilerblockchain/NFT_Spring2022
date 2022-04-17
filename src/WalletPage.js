@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from "react";
 import ReactDOM from 'react-dom';
 import logo from './assets/logo3.png';
 import './styles/App.css';
