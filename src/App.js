@@ -12,7 +12,7 @@ import DisplayImage from "./components/DisplayImage.js"
 import abi from "./utils/NFT.json"
 
 const contractABI = abi.abi
-const CONTRACT_ADDRESS="0x24531DA25f8A26Cd90f48C5C6694E5a8A5356bf4";
+const CONTRACT_ADDRESS="0x0415F28744B55853ab24d1393636216541b58cbC";
 let OPENSEA_LINK = '';
 let TOKEN_ID = 0;
 // Pinata URL at which to pin file
