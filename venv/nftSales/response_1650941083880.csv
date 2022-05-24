@@ -1,0 +1,101 @@
+rank,iconUrl,contractName,baseCurrency,isSalesOnly,value,valueUSD,platform,buyers,sellers,owners,transactions,changeInValueUSD,previousValue,previousValueUSD
+1,https://cryptoslam-token-images.s3.amazonaws.com/icons/moonbirds.png,Moonbirds,ETH,false,53410.4418976998,161774998.17,0,1248,1390,0,1739,-43.9520247310126,95454.1354627218,288636649.93
+2,https://d1nht67oz99wd1.cloudfront.net/resized/mutant-ape-yacht-club_resized.png,Mutant Ape Yacht Club,ETH,false,88774.4420079896,102020904.75,0,749,806,0,1031,185.566492249656,11918.1098885212,35725796.8
+3,https://d1nht67oz99wd1.cloudfront.net/resized/BoredApeYachtClub_resized.ico,Bored Ape Yacht Club,ETH,false,907758.823511616,81929242.39,0,174,205,0,252,240.429149868818,7941.79332770966,24066459.18
+4,https://d1nht67oz99wd1.cloudfront.net/rtfktmnlth.jpeg,RTFKT MNLTH,ETH,true,13192.370639,39219772.792886406,0,912,1006,1,1416,370.9813331874332,2759.942425,8327245.695166092
+5,https://d1nht67oz99wd1.cloudfront.net/resized/bored-ape-kennel-club_resized.png,Bored Ape Kennel Club,ETH,false,14699.98637647,36968115.43,0,727,748,0,1130,806.409034041378,1348.24178640265,4078524.6
+6,https://cryptoslam-token-images.s3.amazonaws.com/murakami.png,MurakamiFlowers Seed,ETH,true,11697.259342,35394499.62893174,0,1412,983,1,1796,-4.718672116554611,12589.657464,37147361.83381985
+7,https://cryptoslam-token-images.s3.amazonaws.com/icons/VF2.png,VeeFriends Series 2,ETH,true,7081.43994555622,21119140.71,0,3525,3326,0,5385,202.102322909922,2327.84461291507,6990724.37
+8,https://d1nht67oz99wd1.cloudfront.net/clonex.jpeg,CloneX,ETH,false,16639.8570490908,19907845.52,0,283,280,0,369,23.7362277310471,5320.04421006888,16088938.45
+9,https://cryptoslam-token-images.s3.amazonaws.com/icons/akutars.png,Akutars,ETH,true,6535.32718497515,19369511.2,0,1097,1150,0,1784,,0,0
+10,https://cryptoslam-token-images.s3.amazonaws.com/icons/eightbitme.png,EightBit,ETH,true,6300.22918369994,18516158.98,0,2878,3045,0,5990,7648.34214269364,79.0474150488153,238969.3
+11,https://d1nht67oz99wd1.cloudfront.net/resized/cryptopunks-logo_resized.png,CryptoPunks,ETH,false,5970.09005,17962153.00850866,0,56,54,3576,81,11.329193005494007,5294.16291,16134270.377422247
+12,https://d1nht67oz99wd1.cloudfront.net/az.png,Azuki,ETH,false,5489.52931903037,16513914.87,0,180,226,0,279,-11.4066302605768,56284.5737746386,18640125.01
+13,https://cryptoslam-token-images.s3.amazonaws.com/beanz.jpg,Beanz,ETH,false,19995.1952297054,16323935.71,0,640,707,0,1084,2.00463664514333,5282.0938446708,16003131.08
+14,https://cryptoslam-token-images.s3.amazonaws.com/icons/akutar.png,Akutar Mint Pass,ETH,true,4794.78059702087,14461349.15,0,1892,1759,0,3076,96.0381983698979,2439.69215521216,7376801.7
+15,https://cryptoslam-token-images.s3.amazonaws.com/icons/theassociation.png,The Association NFT,ETH,true,4606.20219654951,13955151.42,0,6957,8596,0,16002,,0,0
+16,https://cryptoslam-token-images.s3.amazonaws.com/icons/doodles.jpg,Doodles,ETH,false,25116.6879099339,12371300.94,0,167,214,0,320,38.9727017971255,2931.60542121017,8901964.76
+17,https://d1nht67oz99wd1.cloudfront.net/resized/meebits_resized.png,Meebits,ETH,false,3957.43917989731,11321626.6,0,453,415,0,593,162.839623086879,1426.66423535347,4307427.65
+18,https://cryptoslam-token-images.s3.amazonaws.com/icons/boredapecc.jpeg,Bored Ape Chemistry Club,ETH,false,3142.0388,9463107.808616325,0,59,47,0,64,219.7101137483875,985.82235,2959902.5497403597
+19,https://cryptoslam-token-images.s3.amazonaws.com/icons/cryptokicks.png,MNLTHRVLD,ETH,false,3174.67984415032,9369167.25,0,686,520,0,960,,0,0
+20,https://cryptoslam-token-images.s3.amazonaws.com/monolith.png,Rtfkt Nike x Monolith,ETH,true,2977.917293,8782926.224215157,0,508,351,1,618,,0,0
+21,https://cryptoslam-token-images.s3.amazonaws.com/icons/proof1.png,PROOF Collective,ETH,false,2803.69237590767,8454877.08,0,30,28,0,30,58.0603046461026,1760.17999160755,5349146.39
+22,https://cryptoslam-token-images.s3.amazonaws.com/icons/anata.png,Anata NFT,ETH,false,2846.9805021286,8368657.97,0,328,339,0,501,,0,0
+23,https://cryptoslam-token-images.s3.amazonaws.com/muri.jpeg,MURI,ETH,false,2795.85913310945,8277870.98,0,938,1048,0,1394,585.84697252875,398.386000259779,1206955.97
+24,https://cryptoslam-token-images.s3.amazonaws.com/evox.png,MNLTHSKIN,ETH,true,2674.1043721,7898688.350843253,0,627,531,1,902,,0,0
+25,https://cryptoslam-token-images.s3.amazonaws.com/icons/cryptoads.jpg,CrypToadz,ETH,false,2271.733721,6880215.991549833,0,474,476,4232,582,152.79726647639592,899.136273,2721633.856033902
+26,https://cryptoslam-token-images.s3.amazonaws.com/artofseason.jpg,The Art of Seasons,ETH,false,2202.79194373358,6637182.28,0,750,916,0,1421,76.8899742249042,1235.87409088016,3752152.89
+27,https://d1nht67oz99wd1.cloudfront.net/resized/cool-cats_resized.ico,Cool Cats,ETH,false,2172.22594335955,6601574.5,0,258,245,0,298,-17.1965760501425,17527.8937453443,7972586.38
+28,https://cryptoslam-token-images.s3.us-east-1.amazonaws.com/icons/crabada2.png,Crabada,AVAX,false,152642725.992188,6211900.12,11,2635,1057,0,16749,-21.8023897370004,158208522.007812,7943849.05
+29,https://cryptoslam-token-images.s3.amazonaws.com/ugly.png,Ugly People,ETH,true,2062.07619981468,6025331.8,0,4428,3250,0,6891,,0,0
+30,https://cryptoslam-token-images.s3.amazonaws.com/icons/creyzies.png,CREYZIES,ETH,false,1931.374717094,5950341.6,0,2070,2293,0,4251,,0,0
+31,https://cryptoslam-token-images.s3.amazonaws.com/DOLCE.png,DGFamily Glass,ETH,true,1962.5156981945,5744598.8,0,496,834,0,904,,0,0
+32,https://cryptoslam-token-images.s3.amazonaws.com/mems.png,mems,ETH,true,1890.23408026248,5606078.03,0,8094,3791,0,10945,,0,0
+33,https://cryptoslam-token-images.s3.amazonaws.com/icons/degods.png,DeGods,SOL,false,53702.9773,5429904.819428655,14,166,191,4652,196,36.723037298212446,38765.2553,3971462.9858501884
+34,https://cryptoslam-token-images.s3.amazonaws.com/elysium.png,Elysium Code,ETH,true,1788.9909371,5352917.899089184,0,2632,2840,1,4539,,0,0
+35,https://d1nht67oz99wd1.cloudfront.net/nba-top-shot-v2-logo.png,NBA Top Shot,Flow,false,5287753,5287753,4,17968,26095,677633,220220,-22.74936007389994,6844931,6844931
+36,https://d1nht67oz99wd1.cloudfront.net/resized/sorare-logo-v2_resized.png,Sorare,ETH,false,1602.41140502,4831691.254134357,0,14833,16395,118426,60095,-7.773084877302968,1726.049805621,5238916.695529024
+37,https://d1nht67oz99wd1.cloudfront.net/resized/world-of-women_resized.png,World Of Women,ETH,false,15317.7870675372,4823665.35,0,126,143,0,199,76.0600964726617,900.112675203942,2739783.43
+38,https://d1nht67oz99wd1.cloudfront.net/adidas.png,adidas Originals,ETH,true,1571.981852,4683655.503110799,0,694,693,1,826,66.42008850779607,930.46074,2814357.055753753
+39,https://d1nht67oz99wd1.cloudfront.net/resized/axie-infinity-logo_resized.png,Axie Infinity,ETH,false,1501.7783016675833,4513591.888565555,5,40886,34311,2574135,129042,2.605000276015627,1452.392878063978,4398997.979068889
+40,https://d1nht67oz99wd1.cloudfront.net/nftworlds.png,NFT Worlds,ETH,false,39320.1673816489,4306304.89,0,114,120,0,153,38.1766250209472,1434.65587545373,3116521.98
+41,https://cryptoslam-token-images.s3.amazonaws.com/icons/coolpets.png,Cool Pets,ETH,false,1297.02429622551,3939385.42,0,605,620,0,876,-49.0571275969104,2556.82208541036,7732947.19
+42,https://cryptoslam-token-images.s3.amazonaws.com/icons/The-Stoned-Frogs.jpg,The Stoned Frogs,SOL,true,38847.6069868,3924634.033248033,14,4048,6594,4962,6618,,0,0
+43,https://cryptoslam-token-images.s3.amazonaws.com/icons/Shinsei.png,ShinseiGalverse,ETH,true,1230.64755031466,3697896.08,0,1425,1642,0,2556,-71.3282488257648,4249.66723257676,12897349.93
+44,https://cryptoslam-token-images.s3.amazonaws.com/arcade.png,Arcade Land,ETH,false,1075.35647433996,3212752.72,0,634,739,0,1064,-36.0731675649907,1659.21052785218,5025671.69
+45,https://cryptoslam-token-images.s3.amazonaws.com/spaceboo.png,Space Boo,ETH,false,1024.6624267865,3137015.76,0,3956,3767,0,7777,66.0546386783553,621.129859521985,1889146.72
+46,https://d1nht67oz99wd1.cloudfront.net/acrocalypse.png,Acrocalypse,ETH,false,1021.4217556715,3119055.29,0,636,572,0,946,65.486420644699,622.450709849596,1884780.2
+47,https://cryptoslam-token-images.s3.amazonaws.com/icons/NFF.png,Non Fungible Films Mint Pass Token,ETH,true,2231.56766623259,3067556.64,0,565,299,0,745,,0,0
+48,https://cryptoslam-token-images.s3.amazonaws.com/icons/cets-on-creck.png,Cets on Crek,SOL,false,29797.17078168,3015031.657332552,14,320,390,3896,393,74.96193039147416,16674.0236362,1723250.109658983
+49,https://cryptoslam-token-images.s3.amazonaws.com/icons/unemployable.png,Unemployables,ETH,true,976.717405246454,2903095.53,0,1574,1568,0,2684,-30.2422722941383,1364.29982858244,4161683.05
+50,https://d1nht67oz99wd1.cloudfront.net/resized/veefriends_resized.png,VeeFriends,ETH,false,951.906695632264,2858466.15,0,58,68,0,92,9.82496217976941,852.238562125713,2602747.22
+51,https://cryptoslam-token-images.s3.amazonaws.com/smowl.png,smowl,ETH,true,960.929864729696,2839833.23,0,2384,1816,0,5458,,0,0
+52,https://d1nht67oz99wd1.cloudfront.net/resized/world-of-women_resized.png,World Of Women Galaxy,ETH,false,933.677254592068,2816115.64,0,524,534,0,785,-7.69150214412427,1009.61020402517,3050765.32
+53,https://cryptoslam-token-images.s3.amazonaws.com/imposters.png,Impostors Genesis,ETH,false,919.683623887578,2800703.6,0,216,220,0,330,-76.6891449234696,3947.75076439232,12014589.73
+54,https://cryptoslam-token-images.s3.amazonaws.com/icons/deadfellaz.png,DeadFellaz,ETH,false,878.604820985347,2684990.82,0,324,335,0,410,254.141355035717,250.251479511149,758169.24
+55,https://cryptoslam-token-images.s3.amazonaws.com/icons/VSP.png,VaynerSports Pass,ETH,false,872.424253296107,2648426.7,0,1105,977,0,1621,1.240151833926,859.517685711384,2615984.52
+56,https://d1nht67oz99wd1.cloudfront.net/resized/art-blocks-logo2_resized.png,Art Blocks,ETH,false,885.81869231,2642884.8957111402,0,530,721,33869,970,0.9504430573062679,863.89885393,2618002.274849711
+57,https://d1nht67oz99wd1.cloudfront.net/PAG.png,Psychedelics Anonymous Genesis,ETH,false,894.033054594882,2630973.93,0,282,271,0,338,171.183286755863,320.806299352087,970182.92
+58,https://cryptoslam-token-images.s3.amazonaws.com/icons/nfl-all-day-logo.jpg,NFL All Day,Flow,false,2619663,2619663,4,15233,14864,90320,69081,234.80175141733935,782452,782452
+59,https://d1nht67oz99wd1.cloudfront.net/mfers.jpeg,mfer,ETH,false,5074.32485218253,2333634.32,0,212,202,0,278,1.11256238992266,764.318523287773,2307956.86
+60,https://d1nht67oz99wd1.cloudfront.net/crypto-zunks.jpg,Crypto Zunks,ETH,false,727.891922,2255008.8655772647,0,24,23,3662,33,282463.46326079575,0.261,798.053944963144
+61,https://cryptoslam-token-images.s3.amazonaws.com/icons/invisiblefriends.png,Invisible Friends,ETH,false,721.020875224844,2155397.69,0,119,117,0,131,-16.1486977809562,847.896225329489,2570499.96
+62,https://d1nht67oz99wd1.cloudfront.net/3landers.png,3Landers,ETH,true,698.25094,2114454.9105282696,0,319,290,3216,371,22.23719953265,571.319478,1729796.591064319
+63,https://d1nht67oz99wd1.cloudfront.net/karfaru.jpeg,Karafuru,ETH,false,663.420252362266,2014005.43,0,187,181,0,216,7.21274341925004,621.201003226452,1878513.1
+64,https://cryptoslam-token-images.s3.amazonaws.com/icons/cyberbroker.png,CyberBrokers,ETH,false,663.917229294777,1997485.08,0,131,139,0,186,-33.9283991780426,11404.0777468681,3023212.78
+65,https://cryptoslam-token-images.s3.amazonaws.com/icons/pancake-squad.png,Pancake Squad,BNB,true,4584.7748321204,1863376.75,6,229,176,0,400,42.1937676992777,3165.82718323253,1310448.96
+66,https://cryptoslam-token-images.s3.amazonaws.com/icons/moar.png,MOAR by Joan Cornella,ETH,false,619.166068553924,1850399.43,0,230,358,0,431,-80.5501604295873,3122.81155464798,9513700.22
+67,https://cryptoslam-token-images.s3.amazonaws.com/icons/llamaverse.png,Llamaverse Genesis,ETH,false,589.608898639679,1767713.32,0,85,72,0,89,1.90198503709437,572.150000572205,1734719.22
+68,https://d1nht67oz99wd1.cloudfront.net/alienfrens.jpeg,ALIENFRENS,ETH,false,2050.96464849915,1760195.01,0,385,391,0,482,-22.85761407478,750.107150891796,2281748.21
+69,https://cryptoslam-token-images.s3.amazonaws.com/icons/los+muertos.jpg,Los Muertos,ETH,false,578.091188319027,1750847.12,0,925,884,0,1358,-61.8233985123187,1516.14536912268,4586178.58
+70,https://d1nht67oz99wd1.cloudfront.net/kaijukingz.png,Kaiju Kingz,ETH,false,537.3368164,1595105.6380674874,0,262,236,3467,291,111.08939373778477,250.3714404,755654.0903466365
+71,https://cryptoslam-token-images.s3.amazonaws.com/icons/picaroons.png,ThePicaroons,ETH,false,500.431096301414,1510534.76,0,957,1812,0,2838,-66.1732374098142,1474.82636236679,4465502
+72,https://cryptoslam-token-images.s3.amazonaws.com/icons/degen-toonz.png,Degen Toonz,ETH,true,505.54716052115,1495715.67,0,277,422,0,539,97.7851351555064,249.052897065878,756232.6
+73,https://cryptoslam-token-images.s3.amazonaws.com/icons/Crypto-Coral.jpg,Crypto Coral,SOL,true,14746.745629692,1449988.7636852285,14,1952,2947,3792,2959,,0,0
+74,https://cryptoslam-token-images.s3.amazonaws.com/icons/Dead-Rejects.jpg,Dead Rejects,SOL,true,13631.476348698,1388129.5425354794,14,1339,1993,2363,2013,,0,0
+75,https://cryptoslam-token-images.s3.amazonaws.com/icons/shinsekai.png,Shinsekai,ETH,false,449.122466664761,1366387.58,0,1095,1265,0,2141,-83.3672718811985,2730.40931861004,8215053.9
+76,https://d1nht67oz99wd1.cloudfront.net/quirkies.png,Quirkies,ETH,false,450.958290279843,1358925.32,0,126,118,0,186,-47.9916746437241,860.718493365683,2612899.59
+77,https://d1nht67oz99wd1.cloudfront.net/pb.png,PhantaBear,ETH,false,432.8736769,1334598.129570339,0,269,319,5127,404,500.87470242671907,73.7262533,222109.22246857328
+78,https://cryptoslam-token-images.s3.amazonaws.com/icons/hape.png,HAPE PRIME,ETH,false,447.219098895788,1318667.32,0,313,380,0,450,43.0476433572347,303.897155582905,921837.85
+79,https://cryptoslam-token-images.s3.amazonaws.com/icons/Miners-of-Mars.jpg,Miners of Mars,SOL,true,12601.365608179,1302660.7207500224,14,3846,6996,2518,7006,,0,0
+80,https://cryptoslam-token-images.s3.amazonaws.com/icons/blocksmith-labs.jpg,Blocksmith Labs,SOL,false,12638.6509,1269056.252742301,14,331,430,2946,444,98.78550539847814,6229.7681999,638404.8224232432
+81,https://cryptoslam-token-images.s3.amazonaws.com/icons/evarai.png,EveraiDuo,ETH,true,408.52792922128,1220480.95,0,277,324,0,436,-67.7079870530846,1244.58402621746,3779513.38
+82,https://d1nht67oz99wd1.cloudfront.net/WWWL.png,WebbLand,ETH,false,405.771526932716,1220109.53,0,142,162,0,215,-52.6313960490459,9049.22607338428,2575776.84
+83,https://cryptoslam-token-images.s3.amazonaws.com/icons/fullsend.jpeg,FULL SEND METACARD,ETH,false,398.907548427582,1213375.15,0,282,282,0,361,214.326382745776,127.595277607441,386023.96
+84,https://d1nht67oz99wd1.cloudfront.net/nano.jpg,Nanopass,ETH,false,391.389838218689,1172695.17,0,80,78,0,95,18.508302057654,327.157900581136,989546.85
+85,https://d1nht67oz99wd1.cloudfront.net/shadowysupercoder-logo.png,Shadowy Super Coder,SOL,false,11022.479999999,1138492.9878959546,14,51,90,1313,96,68.54004341773395,6690.449799999,675502.9634554854
+86,https://d1nht67oz99wd1.cloudfront.net/CyberKongz.png,CyberKongz,ETH,false,674.87114928105,1122756.88,0,53,52,0,60,-28.1022975310349,3818.57103825547,1561603.28
+87,https://cryptoslam-token-images.s3.amazonaws.com/icons/TombStoned-HighSociety.jpg,TombStoned HighSociety,SOL,true,10901.473884697,1095940.3083367378,14,555,684,911,703,-18.806388699182165,13134.299707984,1349786.3819313808
+88,https://d1nht67oz99wd1.cloudfront.net/onechainmonkey.png,OnChainMonkey,ETH,false,354.405088026077,1060155.07,0,83,134,0,179,149.129372030375,140.786348829046,425543.99
+89,https://cryptoslam-token-images.s3.amazonaws.com/icons/anonymice.jpeg,Anonymice,ETH,false,350.38187636435,1027739.13,0,301,252,0,405,842.026667038196,36.1201998889446,109098.73
+90,https://d1nht67oz99wd1.cloudfront.net/resized/pudgy-penguins_resized.jpg,Pudgy Penguins,ETH,false,338.636004,1027317.944771666,0,107,107,4455,142,5.335592353022216,321.939578,975280.9300475642
+91,https://cryptoslam-token-images.s3.amazonaws.com/icons/solgods.jpg,SOLGods,SOL,false,10205.4398,1021703.7737617672,14,175,199,3033,204,93.88266905383952,5123.79356969,526970.1406256425
+92,https://cryptoslam-token-images.s3.amazonaws.com/icons/zombie+(1).png,ZombieClub Token,ETH,false,324.161128282547,972151.72,0,128,154,0,170,-6.0241692474892,340.393349528313,1034469.94
+93,https://d1nht67oz99wd1.cloudfront.net/coolman.jpeg,CoolmansUniverse,ETH,false,314.925123119727,936303.28,0,235,233,0,324,10.8448292660578,1151.22126788367,844697.3
+94,https://d1nht67oz99wd1.cloudfront.net/bossbeauties.jpg,Boss Beauties,ETH,false,296.058126032352,900706.83,0,182,197,0,261,63.4504470708748,181.391760830767,551058.04
+95,https://d1nht67oz99wd1.cloudfront.net/cybersamurai-logo.png,Cyber Samurai,SOL,false,8884.397746174,895158.7053093021,14,385,857,1923,974,190.6733545679486,3043.734689863,307960.3586781627
+96,https://cryptoslam-token-images.s3.amazonaws.com/icons/Serum-Surfers.jpg,Serum Surfers,SOL,true,8826.622072046,894341.1994171073,14,1783,4122,1530,4137,,0,0
+97,https://cryptoslam-token-images.s3.amazonaws.com/gutterjuice.jpeg,Gutter Juice,ETH,false,292.96261109272,886802.92,0,370,474,0,917,-18.8323525013287,359.553747191094,1092557.13
+98,https://cryptoslam-token-images.s3.amazonaws.com/icons/mindfolk.jpg,Mindfolk,SOL,false,8632.839,875020.5255197563,14,320,431,829,441,16746.420147085908,50.46,5194.103660480753
+99,https://d1nht67oz99wd1.cloudfront.net/pethooligan.jpeg,My Pet Hooligan,ETH,false,285.409140114672,865802.84,0,132,176,0,216,59.9721060410188,178.277450485737,541221.13
+100,https://cryptoslam-token-images.s3.amazonaws.com/icons/DeadCets.jpg,DeadCets,SOL,true,8468.261800145,861880.9711359362,14,3692,7905,1707,8432,,0,0
